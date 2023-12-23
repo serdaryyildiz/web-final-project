@@ -1,3 +1,15 @@
+class student{
+    constructor(name , surname , studentId){
+        this.name = name;
+        this.surname = surname;
+        this.studentId = studentId;
+    }
+
+    toString() {
+        return this.name + " " + this.surname ;
+    }
+}
+
 const studentJsonFile = '../json/students.json';
 const response = getJson(studentJsonFile); /* Reading JSON file to response variable */
 const students = response.json(); /* Turning JSON file to student object */
