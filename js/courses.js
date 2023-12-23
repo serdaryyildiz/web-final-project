@@ -28,7 +28,7 @@ function saveJson(path, data) {  //I implemented this method to my code from sta
 }
   
 
-function findCourseIndex(courseID){
+export function findCourseIndex(courseID){
     return index = courses.findIndex((course) => course.courseID === courseID);
 }
 
@@ -43,7 +43,7 @@ function addLecture(lectureName , lectureId , midtermPercent , lecturer){
 }
 
 function deleteLecture(lectureId){
-    
+
 }
 
 function findLectureAverageScore(lectureId){

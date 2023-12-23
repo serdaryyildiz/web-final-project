@@ -1,4 +1,6 @@
-class student{
+import { findCourseIndex } from "./courses";
+
+class student{  //constructor class to manage student object
     constructor(name , surname , studentId){
         this.name = name;
         this.surname = surname;
@@ -11,8 +13,10 @@ class student{
 }
 
 const studentJsonFile = '../json/students.json';
-const response = getJson(studentJsonFile); /* Reading JSON file to response variable */
-const students = response.json(); /* Turning JSON file to student object */
+const obsJsonFile = '../json/obs.json';
+const courseJsonFile = '../json/courses.json';
+const stResponse = getJson(studentJsonFile); /* Reading JSON file to response variable */
+const students = stResponse.json(); /* Turning JSON file to student object */
 
 async function getJson(path){
     const response = await fetch(path);
@@ -73,5 +77,19 @@ function deleteStudent(studentId){
         saveJson(studentJsonFile,students);
     }else {
         return "Student ID has not found , please try again.";
+    }
+}
+
+function studentGradesByTenths(courseId , studentId){
+    const studentIndex = findStudentIndex(studentId);
+    const courseIndex = findCourseIndex(courseId);
+    if(studentIndex !== -1){
+        if(courseIndex !== -1){
+
+        }else{
+            return "Course has not been found , please try again.";
+        }
+    }else{
+        return "Student has not been found , please try again.";
     }
 }
