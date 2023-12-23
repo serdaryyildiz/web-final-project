@@ -1,0 +1,54 @@
+[
+    {
+        "facultyName" : "Faculty of Engineering",
+        "facultytID" : "1",
+        "departments" :
+        [
+            {
+                "departmentName" : "Computer Engineering",
+                "departmentID" : "CENG"
+            },
+            {
+                "departmentName" : "Electric Electronic Engineering",
+                "departmentID" : "EE"
+            },
+            {
+                "departmentName" : "Software Engineering",
+                "departmentID" : "SE"
+            }
+        ]
+    },
+
+    {
+        "facultyName" : "Faculty of Technology",
+        "facultytID" : "2",
+        "departments" : 
+        [
+            {
+                "departmentName" : "Information Systems Engineering",
+                "departmentID" : "ISE"
+            }
+        ] 
+    },
+
+    {
+        "facultyName" : "Faculty of Health Sciences",
+        "facultytID" : "3",
+        "departments" :
+        [
+            {
+                "departmentName" : "Dietitian",
+                "departmentID" : "DI"
+            },
+            {
+                "departmentName" : "Physiotherapy",
+                "departmentID" : "PHYS"
+            }
+        ]
+    },
+    
+    {
+        "facultyName" : "Rectorate",
+        "facultytID" : "4"
+    }
+]
