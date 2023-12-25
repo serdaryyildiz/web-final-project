@@ -1,5 +1,7 @@
-import database from '../js/database.js'
 const database = require('../js/database.js');
+
+const students = database.getJson('../json/students.json')
+const courses = database.getJson('../json/courses.json')
 
 function findStudentIndex(studentID){
     return index = students.findIndex((student) => student.studentId === studentId);
@@ -22,7 +24,6 @@ function addStudent(name , surname , studentId){
                     studentSurname: surname,
                     studentId: studentId
                 });
-                database
             }else{
                 return "A student with same ID already exists.";
             }
