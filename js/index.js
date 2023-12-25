@@ -9,7 +9,6 @@ async function getJson(path){
     return response;
 }
 
-var profileButton = document.querySelector(".profile");
 
 console.log(students);
 

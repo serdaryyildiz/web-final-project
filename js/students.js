@@ -1,27 +1,5 @@
-import { findCourseIndex } from "./courses";
-
-class student{  //constructor class to manage student object
-    constructor(name , surname , studentId){
-        this.name = name;
-        this.surname = surname;
-        this.studentId = studentId;
-    }
-
-    toString() {
-        return this.name + " " + this.surname ;
-    }
-}
-
-const studentJsonFile = '../json/students.json';
-const obsJsonFile = '../json/obs.json';
-const courseJsonFile = '../json/courses.json';
-const stResponse = getJson(studentJsonFile); /* Reading JSON file to response variable */
-const students = stResponse.json(); /* Turning JSON file to student object */
-
-async function getJson(path){
-    const response = await fetch(path);
-    return response;
-}
+import database from '../js/database.js'
+const database = require('../js/database.js');
 
 function findStudentIndex(studentID){
     return index = students.findIndex((student) => student.studentId === studentId);
@@ -38,12 +16,16 @@ function isStudentIdValid(studentID){
 function addStudent(name , surname , studentId){
     try{
         if(isStudentIdValid(studentId)){
-            students.push({
-                studentName: name,
-                studentSurname: surname,
-                studentId: studentId
-            });
-            saveJson(studentJsonFile, students);
+            if(findStudentIndex(studentId) === -1){
+                students.push({
+                    studentName: name,
+                    studentSurname: surname,
+                    studentId: studentId
+                });
+                database
+            }else{
+                return "A student with same ID already exists.";
+            }
         }else {
             return "Unvalid Student ID .";
         }
@@ -71,13 +53,18 @@ function updateStudent(studentId , newName , newSurname){
 }
 
 function deleteStudent(studentId){
-    const index = findStudentIndex(studentId);
-    if(index !== -1){
-        students.splice(index);
-        saveJson(studentJsonFile,students);
-    }else {
-        return "Student ID has not found , please try again.";
+    try{
+        const index = findStudentIndex(studentId);
+        if(index !== -1){
+            students.splice(index);
+            saveJson(studentJsonFile,students);
+        }else {
+            return "Student ID has not found , please try again.";
+        }
+    }catch(err){
+        return "An error occupied , error :" + err;
     }
+   
 }
 
 function studentGradesByTenths(courseId , studentId){
@@ -85,11 +72,23 @@ function studentGradesByTenths(courseId , studentId){
     const courseIndex = findCourseIndex(courseId);
     if(studentIndex !== -1){
         if(courseIndex !== -1){
-
         }else{
             return "Course has not been found , please try again.";
         }
     }else{
         return "Student has not been found , please try again.";
+    }
+}
+
+
+class student{  //constructor class to manage student object
+    constructor(name , surname , studentId){
+        this.name = name;
+        this.surname = surname;
+        this.studentId = studentId;
+    }
+
+    toString() {
+        return this.name + " " + this.surname ;
     }
 }

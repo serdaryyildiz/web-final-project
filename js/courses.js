@@ -1,7 +1,18 @@
-class course{
-    constructor(courseID , lecturer){
+class courses{
+    constructor(courseName ,courseID , lecturer , courseFaculty , midtermPercent ){
         this.courseID = courseID;
         this.lecturer = lecturer;
+        this.courseName = courseName;
+        this.courseFaculty = courseFaculty;
+        this.midtermPercent = midtermPercent;
+    }
+    constructor(courseName ,courseID , lecturer , courseFaculty, courseDepartment , midtermPercent ){ //Overwriting with courseDept* variable.
+        this.courseID = courseID;
+        this.lecturer = lecturer;
+        this.courseName = courseName;
+        this.courseFaculty = courseFaculty;
+        this.midtermPercent = midtermPercent;
+        this.courseDepartment = courseDepartment;
     }
 }
 
