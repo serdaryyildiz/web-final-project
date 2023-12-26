@@ -1,8 +1,5 @@
-const studentJsonFile = '../json/students.json';
-const obsJsonFile = '../json/obs.json';
-const courseJsonFile = '../json/courses.json';
-const stResponse = fetch(studentJsonFile); /* Reading JSON file to response variable */
-const students = stResponse.json(); /* Turning JSON file to student object */
+const students = require('../js/students.js');
+const courses = require('../js/courses.js'); 
 
 async function getJson(path){
     const response = await fetch(path);

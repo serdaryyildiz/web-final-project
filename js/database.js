@@ -24,7 +24,22 @@ function getJson(path){
     }
 }
 
+function findIndex(path , data){    //Burada yanlış var , key olmiycak . Düzelt
+    try{
+        let counter = 0;
+        for (let key of Object.keys(data)){
+            if(data === key){
+                return counter;
+            }
+            counter++;
+        }
+    }catch(err){
+        return "Database error , error :" +err;
+    }
+}
+
 module.exports = {
     saveJson : saveJson,
-    getJson : getJson
+    getJson : getJson,
+    findIndex : findIndex
 }

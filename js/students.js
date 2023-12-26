@@ -73,6 +73,9 @@ function studentGradesByTenths(courseId , studentId){
     const courseIndex = findCourseIndex(courseId);
     if(studentIndex !== -1){
         if(courseIndex !== -1){
+            const midtermPerc = courses[courseIndex].midtermPerc
+            const finalPerc = 100 - midtermPerc;
+
         }else{
             return "Course has not been found , please try again.";
         }
