@@ -1,30 +1,41 @@
-const studentsJsonPath = "../json/students.json";
-const stInfosJsonPath = "../json/studentInfo.json";
-const coursesJsonPath = "../json/courses.json";
-const facultiesJsonPath = "../json/faculties.json";
+const courses = document.querySelector(".courses");
+const students = document.querySelector(".students");
+const faculties = document.querySelector(".faculties");
 
-async function getJson(path) {
-    const response = await fetch(path);
-    const data = await response.json();
-    return data;
-}
-
-async function setLocalStorage() {  
-    try {
-        const students = await getJson(studentsJsonPath);
-        const studentInfos = await getJson(stInfosJsonPath);
-        const courses = await getJson(coursesJsonPath);
-        const faculties = await getJson(facultiesJsonPath);
-
-        localStorage.setItem("students", JSON.stringify(students));
-        localStorage.setItem("studentInfos", JSON.stringify(studentInfos));
-        localStorage.setItem("courses", JSON.stringify(courses));
-        localStorage.setItem("faculties", JSON.stringify(faculties));
-        
-        console.log("Veriler localStorage'a kaydedildi.");
-    } catch (error) {
-        console.error("Hata oluştu: ", error);
+courses.addEventListener("click" , function() {
+    if(courses.classList.contains("hidden")){
+        courses.classList.remove("hidden");
     }
-}
 
-setLocalStorage();
+    if(!students.classList.contains("hidden")){
+        students.classList.add("hidden");       //If students div do not have hidden class , then faculties user is at faculties page
+                                                //so , i am not checking faculties.classList again.
+    }else{
+        faculties.classList.add("hidden");
+    }
+});
+
+students.addEventListener("click" , function() {
+    if(students.classList.contains("hidden")){
+        students.classList.remove("hidden");
+    }
+
+    if(!courses.classList.contains("hidden")){
+        courses.classList.add("hidden");
+    }else{
+        faculties.classList.add("hidden");
+    }
+});
+
+faculties.addEventListener("click" , function() {
+    if(faculties.classList.contains("hidden")){
+        faculties.classList.remove("hidden");
+    }
+
+    if(!students.classList.contains("hidden")){
+        students.classList.add("hidden");
+    }else{
+        courses.classList.add("hidden");
+    }
+});
+
