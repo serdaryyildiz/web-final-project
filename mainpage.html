@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/styles.css">
-    <script src="../js/index.js" defer></script>
+    <script type="module" src="../js/index.js" defer></script>
     <title>MSKU OBS</title>
 </head>
 <body>
@@ -25,25 +25,33 @@
                 </div>
                 <div class="left-bar-holder">
                     <ul>
-                        <a href=""><li>Courses</li></a>
-                        <a href=""><li>Students</li></a>
-                        <a href=""><li>Faculties</li></a>
+                        <li><a href="#" class="home-btn">Home</a></li>
+                        
+                        <li><a href="#" class="courses-btn">Courses</a></li>
+
+                        <li><a href="#" class="students-btn">Students</a></li>
+
+                        <li><a href="#" class="faculties-btn">Faculties</a></li>
                     </ul>
                 </div>
     
             </div>
             <div class="content-holder">
+                <div class="home">
+                    <h1>HOME</h1>
+                </div>
                 <div class="courses hidden">
                    <span><h1>Courses</h1></span>
-                   <span><p id="courses"></p></span>
-
+                   <p id="courseCount"></p>
+                    <table id="coursesTable"></table>
                 </div>
-                <div class="students">
+                <div class="students hidden">
                     <h1>Students</h1>
-                    <span><p id="students">There are bla bla students </p></span>
+                    <p id="studentCount"></p>
                 </div>
                 <div class="faculties hidden">
                     <h1>Faculties</h1>
+                    <p id="facultyCount"></p>
                 </div>
             </div>
         </div>
@@ -66,9 +74,9 @@
             </div>
             <div class="footer-right">
                 <ul>
-                    <li><span class="list-header">Baslik</span></li>
-                    <a><li>1</li></a>
-                    <a><li>2</li></a>
+                    <li><span class="list-header">Others</span></li>
+                    <a href=""><li>dys.uni.tr</li></a>
+                    <a href=""><li>uni.edu.tr</li></a>
                 </ul>
             </div>
         </div>

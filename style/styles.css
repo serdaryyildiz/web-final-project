@@ -32,7 +32,7 @@ ul {
 }
 
 .hidden{
-    display: none;
+    display: none !important; /* !important method is useful for class priorities */
 }
 
 
@@ -76,7 +76,7 @@ nav {
 
 .content-holder{
     height: 85vh;
-    width: 84vw;
+    width: 90vw;
     overflow: auto;
     text-align: center;
     color: #303030;
@@ -100,8 +100,8 @@ nav {
     display: flex;
     flex-direction: column;
     justify-content: start;
-    background-color: #352F44;
-    width: 16vw;
+    background-color: #49415c;
+    width: 10vw;
     height: 72.5vh;
 }
 
@@ -110,18 +110,25 @@ nav {
 }
 
 .left-bar ul li{
-    border: 1px solid #5C5470;
     padding: 1rem;
     text-align: center;
 }
 .left-bar li:hover{
-    background-color: #524A67;
+    background-color: #5C5470;
     box-shadow: 0px 0px 1rem rgba(0 , 0 , 0 , 0.4);
     font-style: italic;
 }
 
+.left-bar ul li.subbutton{
+    padding: 0.2rem !important; /* class priority */
+    background-color: #5C5470;
+    border: 0.1px solid #443e53;
+    font-size: 0.9rem;
+}
+
 .footer{
     background-color: #5C5470;
+    box-shadow: 1px 13px 13px 0.5rem rgba(0, 0, 0, 1);
     display: flex;
     justify-content: space-around;
     align-items: center;

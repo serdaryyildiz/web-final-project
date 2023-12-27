@@ -27,6 +27,7 @@
         "courseName" : "TURKISH I",
         "courseID" : "TDB3801" ,
         "courseFaculty" : "4",
+        "courseDepartment" : "4",
         "midtermPercent" : "40%",
         "lecturer" : "Fatma AYAN" 
     },
@@ -34,6 +35,7 @@
         "courseName" : "PRINCIPLES OF KEMAL ATATURK I",
         "courseID" : "ATB3801" ,
         "courseFaculty" : "4",
+        "courseDepartment" : "4",
         "midtermPercent" : "40%",
         "lecturer" : "Tuğba ÇALIŞKAN" 
     }
