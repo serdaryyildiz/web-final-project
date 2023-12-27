@@ -98,4 +98,6 @@ facultiesBtn.addEventListener("click" , function() {
 
 // storagelocal.updateCourse("ATB3801" , "ATATURK" , "30%" , "Serdar YILDIZ")
 // storagelocal.updateStudent("200709051" , "Kutay Hanzo" , "ÖZCAN")
+storagelocal.addNewStudent("Mahmut" , "TUNCER" , "200709051");
+storagelocal.addNewCourse("kursadi" , "22" , "fakulte" , "dep" , "30%" , "ahmet yildiz");
 

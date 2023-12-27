@@ -83,6 +83,51 @@ nav {
     height: 72.5vh;
 }
 
+.buttons{
+    margin: 1rem;
+}
+
+.btn{
+    border: none;
+    padding: 1.2rem 1.4rem;
+    border-radius: 0.4rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: whitesmoke;
+    margin: 0 1% 0 1rem;
+    width: 12vw;
+}
+
+.btn:hover{
+    font-style: italic;
+    font-weight: bold;
+}
+
+.add-btn{
+    background-color: #036528;
+
+}
+
+.add-btn:hover{
+    background-color: #157C3B;
+
+}
+
+.update-btn{
+    background-color: #2E0D45;
+}
+
+.update-btn:hover{
+    background-color: #46205F;
+}
+
+.delete-btn{
+    background-color: #420000;
+}
+
+.delete-btn:hover{
+    background-color: #8E2929;
+}
+
 .courses{
     padding: 1rem;
 }
@@ -90,6 +135,7 @@ nav {
 .students{
     padding: 1rem;
 }
+
 
 .faculties{
     padding: 1rem;
