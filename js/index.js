@@ -1,6 +1,7 @@
 import storagelocal from "../js/storagelocal.js";
 import { createStudentTable } from "../js/studentsdata.js";
 import { createCourseTable } from "../js/coursedata.js";
+import { createFacultiesTable } from "../js/facultiesdata.js";
 //DOM Elements
 const homeBtn = document.querySelector(".home-btn");
 const coursesBtn = document.querySelector(".courses-btn");
@@ -14,6 +15,7 @@ const studentAddForm = document.getElementById("std-add-form");
 const courseAddForm = document.getElementById("course-add-form");
 const studentTable = document.getElementById("students-table");
 const coursesTable = document.getElementById("coursesTable");
+const facultiesTable = document.getElementById("faculties-table");
 
 //Local Storage Variables
 let studentCounter = storagelocal.getStudentDataLength();
@@ -51,7 +53,7 @@ stdAddButton.addEventListener("click" , function() {
 // Javascript Section for faculty actions
 facultiesBtn.addEventListener("click" , function() {
     pageChange("faculties");
-    
+    createFacultiesTable(facultiesTable);
 });
 
 //Changing page function 

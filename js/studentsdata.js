@@ -25,11 +25,10 @@ function findStudentById(studentID){
         for(let val = 0 ; val < getStudentList.length ; val++){
             if (studentID === students[val].studentId){
                 return students[val];
-            } else{
-                console.log("bulunamadi");
-                return "Student has not been found .";
             }
         }
+        console.log("bulunamadi");
+        return -1;
     }  catch (err) {
         console.log("findStudentById error , error : \n" +err);
     }
@@ -42,12 +41,11 @@ function findStudentByName(studentname){
         for(let val = 0 ; val < students.length ; val++){
             if (studentname === students[val].name){
                 return students[val];
-            } else{
-                console.log("bulunamadi");
-                return "Student has not been found .";
-                
             }
+
         }
+        console.log("bulunamadi");
+        return "Student has not been found .";
     }catch(err){
         console.log("Find student by name error , error :\n" + err);
     }   
@@ -82,14 +80,11 @@ function addStudent(studentName , studentSurname , studentID){
 }
 
 function doesStudentExist(studentID){       //This function checking Student with that ID is exists or not.
-    let exist = false;
-    const students = getStudentList();
-    for(let i = 0 ; i < students.length ; i++){
-        if(studentID === students[i].studentId){
-            exist = true
-        }
-    }
-    return exist;
+    let result = findStudentById(studentID);
+    if(result === -1){
+        return false;
+    } 
+    return true;
 }
 
 function updateStudent(studentID, updatedName , updatedSurname) {

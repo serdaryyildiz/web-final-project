@@ -1,4 +1,6 @@
 import { Student } from "../js/students.js";
+import { Faculty } from "./faculties.js";
+import { Department } from "./department.js";
 
 const studentsJsonPath = "../json/students.json";
 const stInfosJsonPath = "../json/studentInfo.json";
@@ -8,9 +10,13 @@ const facultiesJsonPath = "../json/faculties.json";
 const courseData = JSON.parse(localStorage.getItem("courses"))  || [];
 const studentsData = JSON.parse(localStorage.getItem("students")) || [];
 const studentsInfoData = JSON.parse(localStorage.getItem("studentInfos")) || [];
+const facultiesData = JSON.parse(localStorage.getItem("faculties")) || [];
+const departmentsData = [] ;
 
 let courseDataLength = courseData.length;
 let studentsDataLength = studentsData.length;
+let facultiesDataLength = facultiesData.length;
+let departmentsDataLength = departmentsData.length;
 
 async function getJson(path) {
     const response = await fetch(path);
@@ -37,6 +43,30 @@ async function setLocalStorage() {
 }
 setLocalStorage();
 
+export function setDepartments(){
+    const faculties = getFacultiesData();
+    faculties.forEach(faculty => {
+        if(faculty.departments && faculty.departments.length > 0) {
+            faculty.departments.forEach(department => {
+                var newDepartment = new Department(
+                    department.departmentName ,
+                    department.departmentID,
+                    faculty.facultyID
+                );
+                departmentsData.push(newDepartment);
+            })
+        }
+    });
+}
+
+export function getDepartments(){
+    return departmentsData;
+}
+
+export function getDepartmentsLength(){
+    return departmentsDataLength;
+}
+
 export function getCourseData(){
     return courseData;
 }
@@ -57,10 +87,22 @@ export function getStudentsInfoData(){
     return studentsInfoData;
 }
 
+export function getFacultiesData(){
+    return facultiesData;
+}
+
+export function getFacultiesDataLength(){
+    return facultiesDataLength;
+}
+
 export default {
     getCourseData,
     getCourseDataLength,
     getStudentsData,
     getStudentDataLength,
-    getStudentsInfoData
+    getStudentsInfoData,
+    getFacultiesData,
+    getFacultiesDataLength,
+    getDepartments,
+    getDepartmentsLength
 }

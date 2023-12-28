@@ -1,7 +1,7 @@
 [
     {
         "facultyName" : "Faculty of Engineering",
-        "facultytID" : "1",
+        "facultyID" : "1",
         "departments" :
         [
             {
@@ -21,7 +21,7 @@
 
     {
         "facultyName" : "Faculty of Technology",
-        "facultytID" : "2",
+        "facultyID" : "2",
         "departments" : 
         [
             {
@@ -33,7 +33,7 @@
 
     {
         "facultyName" : "Faculty of Health Sciences",
-        "facultytID" : "3",
+        "facultyID" : "3",
         "departments" :
         [
             {
@@ -49,6 +49,10 @@
     
     {
         "facultyName" : "Rectorate",
-        "facultytID" : "4"
+        "facultyID" : "4" ,
+        "departments" : 
+        [
+            
+        ]
     }
 ]

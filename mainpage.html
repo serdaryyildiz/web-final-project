@@ -128,10 +128,11 @@
                                     <label>
                                         <select id = "faculty" name = "university">
                                             <option value = "" disabled selected><p>Select faculty</p></option>
-                                            <option value="ENGINEERING"><p>Faculty of Engineering</p></option>
-                                            <option value="TECHNOLOGY"><p>Faculty of Technology</p></option>
-                                            <option value="HEALTHSC"><p>Faculty of Health Sciences</p></option>
-                                            <option value="RECTORATE"><p>Rectorate</p></option>
+                                            <option value="1"><p>Faculty of Engineering</p></option>
+                                            <option value="2"><p>Faculty of Technology</p></option>
+                                            <option value="3"><p>Faculty of Health Sciences</p></option>
+                                            <option value="4"><p>Rectorate</p></option>
+                                            <!-- values of options are facultyID's at faculties.json file -->
                                         </select>
                                     </label>  
                                 </div>
@@ -148,6 +149,10 @@
                 <div class="faculties hidden page">
                     <h1>Faculties</h1>
                     <p id="facultyCount"></p>
+
+                    <div class="table-div">
+                        <table class="table" id="faculties-table"></table>
+                    </div>
                 </div>
             </div>
         </div>

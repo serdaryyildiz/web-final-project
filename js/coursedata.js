@@ -136,7 +136,7 @@ export function createCourseTable(domElement){
     headerRow.style.backgroundColor = "#303030";
     headerRow.style.color = "whitesmoke";
 
-    // Iterate through students and create table rows
+    // Iterate through courses and create table rows
     for (let i = 0; i < courses.length; i++) {
         const row = courseTable.insertRow();
         row.insertCell().textContent = courses[i].courseID;
