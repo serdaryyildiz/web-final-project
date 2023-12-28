@@ -1,4 +1,6 @@
-import storagelocal from "./storagelocal.js";
+import storagelocal from "../js/storagelocal.js";
+import { createStudentTable } from "../js/students.js";
+
 
 //DOM Elements
 const home = document.querySelector(".home");
@@ -11,7 +13,9 @@ const studentsBtn = document.querySelector(".students-btn");
 const facultiesBtn = document.querySelector(".faculties-btn");
 const courseCount = document.getElementById("courseCount");
 const studentCount = document.getElementById("studentCount");
-const studentTable = document.getElementById("student-table");
+const stdAddButton = document.getElementById("std-add");
+const studentAddForm = document.getElementById("std-add-form");
+
 
 //Local Storage Variables
 let studentCounter = storagelocal.getStudentDataLength();
@@ -67,7 +71,6 @@ coursesBtn.addEventListener("click" , function() {
 
 studentsBtn.addEventListener("click" , function() {
     
-
     if(students.classList.contains("hidden")){      // We could use students.classList.toggle() method but , if I use toggle() method
         students.classList.remove("hidden");        //when user clicks student page when it hasn't hidden class , toggle() method will add hidden class.
     }
@@ -81,8 +84,14 @@ studentsBtn.addEventListener("click" , function() {
     if(!faculties.classList.contains("hidden")){
         faculties.classList.add("hidden"); 
     }
-    
+    createStudentTable();
 });
+
+stdAddButton.addEventListener("click" , function() {
+    studentAddForm.classList.toggle("hidden");
+});
+
+
 
 // Javascript Section for faculty actions
 facultiesBtn.addEventListener("click" , function() {
@@ -102,32 +111,8 @@ facultiesBtn.addEventListener("click" , function() {
     
 });
 
-function createStudentTable() {
-    const students = storagelocal.getStudentsData();
-  
-    // Clear any existing table content
-    studentTable.innerHTML = "";
-  
-    // Create the table header
-    const headerRow = studentTable.insertRow();
-    headerRow.insertCell().textContent = "ID";
-    headerRow.insertCell().textContent = "Name";
-    headerRow.insertCell().textContent = "Surname";
-  
-    // Iterate through students and create table rows
-    for (const student of students) {
-      const row = studentTable.insertRow();
-      row.insertCell().textContent = student.studentI
-      row.insertCell().textContent = student.studentName;
-      row.insertCell().textContent = student.studentSurname;
-    }
-  
-    // Return table as a string
-    return studentTable.innerHTML;
-  }
+
 
 // storagelocal.updateCourse("ATB3801" , "ATATURK" , "30%" , "Serdar YILDIZ")
 // storagelocal.updateStudent("200709051" , "Kutay Hanzo" , "ÖZCAN")
-storagelocal.addNewStudent("Mahmut" , "TUNCER" , "200709051");
-storagelocal.addNewCourse("kursadi" , "22" , "fakulte" , "dep" , "30%" , "ahmet yildiz");
 

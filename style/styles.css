@@ -113,9 +113,17 @@ nav {
 
 .table{
     border: 3px solid #352F44;
-    width: 60vw;
-    height: 50vh;
     font-style: italic;
+}
+
+#students-table{
+    width: 60vw;
+    height: 100vh;
+}
+
+#coursesTable{
+    width: 80%;
+    height: 25vh;
 }
 
 .buttons{
@@ -129,7 +137,7 @@ nav {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: whitesmoke;
     margin: 0 1% 0 1rem;
-    width: 12vw;
+    width: 14vw;
 }
 
 .btn:hover{
@@ -244,6 +252,9 @@ nav {
 
 /* Form CSS Codes */
 
+
+
+/* Add Student Form */
 .form-border {
     display: flex;
     border: 1px solid #7B7187;
@@ -253,7 +264,7 @@ nav {
     flex-direction: column;
     justify-content: space-around;
     width: 50vw;
-    height: 60vh;
+    max-height: 70vh;
 }
 
 .form-border p {
@@ -321,15 +332,16 @@ input[type=submit]:hover {
 
 .input-holder {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     flex-direction: column;
-    width: 50%;
-    margin-top: 2.5rem;
+    width: 70%;
+    margin: 1rem auto 0 auto;
 }
 
 .input {
     display: flex;
     flex-direction: column;
+    margin-bottom: 0.5rem;
 }
 
 .input p {
@@ -341,7 +353,6 @@ input[type=submit]:hover {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-top: 3.5rem;
 }
 
 .select-holder label {
@@ -357,8 +368,9 @@ input[type=submit]:hover {
 
 .button-holder{
     display: flex;
-    flex-direction:row-reverse;
-    margin-right: 3rem;
-    margin-bottom: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
 }
+
+/* Update Student Form */
 

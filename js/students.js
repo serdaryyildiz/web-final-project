@@ -1,91 +1,4 @@
-const database = require('../js/database.js');
-
-const students = database.getJson('../json/students.json')
-const courses = database.getJson('../json/courses.json')
-
-function findStudentIndex(studentID){
-    return index = students.findIndex((student) => student.studentId === studentId);
-}
-
-function isStudentIdValid(studentID){
-    let isValid = true;
-    if(studentID <= 99999999 || studentID >= 1000000000){
-        isValid = false
-    }
-    return isValid;
-}
-
-function addStudent(name , surname , studentId){
-    try{
-        if(isStudentIdValid(studentId)){
-            if(findStudentIndex(studentId) === -1){
-                students.push({
-                    studentName: name,
-                    studentSurname: surname,
-                    studentId: studentId
-                });
-            }else{
-                return "A student with same ID already exists.";
-            }
-        }else {
-            return "Unvalid Student ID .";
-        }
-    }catch(err){
-        return "An error has occured , error : " + err;
-    }
-}
-
-function updateStudent(studentId , newName , newSurname){
-    try{
-        const studentsCopy = '../json/students.json' /* Before updating copying the file can let us handle updating errors*/
-        const index = findStudentIndex(studentId);
-        if(index !== -1){
-            students[index].name = newName;
-            students[index].surname = newSurname;
-            saveJson(studentJsonFile , studentsCopy);
-        }else{
-            return "Student has not found , please try again.";
-        }
-
-    }catch (err){
-        return "An error has occured , error : " + err;
-    }
-
-}
-
-function deleteStudent(studentId){
-    try{
-        const index = findStudentIndex(studentId);
-        if(index !== -1){
-            students.splice(index);
-            saveJson(studentJsonFile,students);
-        }else {
-            return "Student ID has not found , please try again.";
-        }
-    }catch(err){
-        return "An error occupied , error :" + err;
-    }
-   
-}
-
-function studentGradesByTenths(courseId , studentId){
-    const studentIndex = findStudentIndex(studentId);
-    const courseIndex = findCourseIndex(courseId);
-    if(studentIndex !== -1){
-        if(courseIndex !== -1){
-            const midtermPerc = courses[courseIndex].midtermPerc
-            const finalPerc = 100 - midtermPerc;
-
-        }else{
-            return "Course has not been found , please try again.";
-        }
-    }else{
-        return "Student has not been found , please try again.";
-    }
-}
-
-
-class student{  //constructor class to manage student object
+export class student{  //constructor class to manage student object
     constructor(name , surname , studentId){
         this.name = name;
         this.surname = surname;
@@ -95,4 +8,52 @@ class student{  //constructor class to manage student object
     toString() {
         return this.name + " " + this.surname ;
     }
+}
+
+import {getStudentsData} from "../js/storagelocal.js";
+
+export function isStudentIdValid(studentID){
+    let isValid = true;
+    if(studentID <= 99999999 || studentID >= 1000000000){
+        isValid = false
+    }
+    return isValid;
+}
+
+
+export function createStudentTable() {
+    const studentTable = document.getElementById("students-table");
+    const students = getStudentsData();
+    // Clear any existing table content
+    studentTable.innerHTML = "";
+  
+    // Create the table header
+    const headerRow = studentTable.insertRow();
+    headerRow.insertCell().textContent = "ID";
+    headerRow.insertCell().textContent = "Name";
+    headerRow.insertCell().textContent = "Surname";
+    headerRow.style.backgroundColor = "#303030";
+    headerRow.style.color = "whitesmoke";
+  
+    // Iterate through students and create table rows
+    for (let i = 0; i < students.length; i++) {
+        const row = studentTable.insertRow();
+        row.insertCell().textContent = students[i].studentID;
+        row.insertCell().textContent = students[i].studentName;
+        row.insertCell().textContent = students[i].studentSurname;
+  
+        // Satırın indeksine göre arka plan rengini belirleme
+        if (i % 2 === 1) {
+          row.style.backgroundColor = "#B9B4C7";
+          row.style.color = "49415c";
+        } else {
+          row.style.backgroundColor = "#49415c";
+          row.style.color = "#B9B4C7";
+        }
+      }
+
+    
+  
+    // Return table as a string
+    return studentTable.innerHTML;
 }

@@ -5,9 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/styles.css">
     <script type="module" src="../js/index.js" defer></script>
-    <title>MSKU OBS</title>
+    <title>UNI OBS</title>
 </head>
 <body>
+    <script>
+
+        //Changing page function 
+        document.addEventListener("DOMContentLoaded", function () {
+            //Changing page function 
+            function pageChange(page){
+                console.log("calisti");
+                const pages = document.querySelectorAll(".page");
+                console.log(pages);
+                for(let i = 0 ; i < pages.length ; i++){
+                    if(pages[i].classList.contains(page)){
+                        pages[i].classList.remove("hidden");
+                    } else {
+                        pages[i].classList.add("hidden");
+                    }
+                    console.log("calisti " + pages[i]);
+                }
+            }
+        });
+
+    </script>
     <section>
         <nav>
             <div class="nav-left">
@@ -37,7 +58,7 @@
     
             </div>
             <div class="content-holder">
-                <div class="home">
+                <div class="home page" onclick="pageChange('home')">
                     <h1>HOME</h1>
                     <div class="home-content">
                         <p id="home-p">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis facilis eius quo excepturi atque inventore id minus, cumque veniam reiciendis modi perferendis et suscipit obcaecati, vel possimus, exercitationem quae tempora? Cum accusamus esse perspiciatis nemo ea modi, vel eaque sunt culpa ratione architecto inventore officia, beatae molestiae cumque illum placeat voluptate minima soluta. Porro repudiandae tempora cumque minus incidunt, cum earum corrupti eos ex culpa facilis quia debitis ipsum harum necessitatibus corporis nobis labore velit quibusdam. Eum sapiente voluptate quod, aliquam recusandae ducimus veritatis odit quasi expedita? Quisquam voluptas, possimus praesentium veritatis dignissimos dolor rem quia placeat consequatur ea libero? A excepturi similique libero aspernatur odio, facilis reiciendis sint delectus, molestias dolores laborum cum fuga! Qui temporibus velit cupiditate sit eligendi laborum doloremque vero nihil molestias quam laboriosam, soluta repellat repudiandae. Deleniti omnis sint esse beatae, et quas quam dolores architecto? Explicabo unde quisquam quibusdam aliquam et tenetur repellendus eaque quo exercitationem vero nobis atque temporibus nisi harum deleniti modi, adipisci in voluptatem. Blanditiis, libero magnam asperiores deserunt corporis quos consequuntur inventore. Quibusdam vitae aut perspiciatis quae a. Reiciendis recusandae itaque nemo unde neque a? Accusamus sunt, dolores, expedita praesentium esse dolor quisquam optio voluptate vero voluptates sapiente harum neque? Earum quo cum est, saepe maiores, aliquid facilis iste laboriosam animi doloremque quibusdam dolorem sunt ducimus magni obcaecati praesentium dolore! Error, mollitia. Impedit, omnis? Officia et, dolorum cum quae vel, earum quam autem incidunt debitis modi enim facere deleniti soluta deserunt minima eligendi repellat, officiis eos quisquam mollitia id iure.</p>
@@ -46,7 +67,7 @@
                     
                     
                 </div>
-                <div class="courses hidden">
+                <div class="courses hidden page" onclick="pageChange('courses')">
                    <span><h1>Courses</h1></span>
                    <p id="courseCount"></p>
                    <div class="buttons">
@@ -54,21 +75,60 @@
                     <button class="btn update-btn" id="course-upd">Update Course</button>
                     <button class="btn delete-btn" id="course-dlt">Delete Course</button>
                 </div>
-                    <table id="coursesTable"></table>
+                    <div class="table-div">
+                        <table class="table" id="coursesTable"></table>
+                    </div>
+                    
                 </div>
-                <div class="students hidden">
+                <div class="students hidden page" onclick="pageChange('students')">
                     <h1>Students</h1>
                     <p id="studentCount"></p>
                     <div class="buttons">
                         <button class="btn add-btn" id="std-add">Add New Student</button>
                         <button class="btn update-btn" id="std-upd">Update Student</button>
                         <button class="btn delete-btn" id="std-dlt">Delete Student</button>
+                        <div id="std-add-form" class="form-border hidden">
+                            <form>
+                                <div class="form-tag">
+                                    <strong><h2>New Student Addition</h2><br></strong>
+                                    <p>Please fill the blanks below</p>
+                                </div>
+                                <div class="input-holder">
+                                    <div class="input">
+                                        <input type="text" id="studentNameInput" placeholder="Enter student name">
+                                    </div>
+                                    <div class="input">
+                                        <input type="text" id="studentSurnameInput" placeholder="Enter student surname">
+                                    </div>
+                                    <div class="input">
+                                        <input type="text" id="studentIdInput" placeholder="Enter student ID">
+                                    </div>
+                                </div>
+                                <div class="select-holder">
+                                    <p>Please select your faculty </p>
+                                    <label>
+                                        <select id = "faculty" name = "university">
+                                            <option value = "" disabled selected><p>Select faculty</p></option>
+                                            <option value="ENGINEERING"><p>Faculty of Engineering</p></option>
+                                            <option value="TECHNOLOGY"><p>Faculty of Technology</p></option>
+                                            <option value="HEALTHSC"><p>Faculty of Health Sciences</p></option>
+                                            <option value="RECTORATE"><p>Rectorate</p></option>
+                                        </select>
+                                    </label>  
+                                </div>
+                                <div class="button-holder">
+                                    <input type="submit" value="Submit">
+                                </div>
+                            </form>
+                        </div>
+                        <form class="form" id="update-form"></form>
+                        <form class="form" id="delete-form"></form>
                     </div>
-                    <table id="students-table">
-                        
-                    </table>
+                    <div class="table-div">
+                        <table class="table" id="students-table"></table>
+                    </div>
                 </div>
-                <div class="faculties hidden">
+                <div class="faculties hidden page" onclick="pageChange('faculties')">
                     <h1>Faculties</h1>
                     <p id="facultyCount"></p>
                 </div>
