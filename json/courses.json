@@ -5,7 +5,8 @@
         "courseFaculty" : "1",
         "courseDepartment" : "CENG",
         "midtermPercent" : "20%",
-        "lecturer" : "Bekir Taner DİNÇER" 
+        "lecturer" : "Bekir Taner DİNÇER" ,
+        "acts" : "6"
     },
     {
         "courseName" : "Database Management Systems",
@@ -13,7 +14,8 @@
         "courseFaculty" : "1",
         "courseDepartment" : "CENG",
         "midtermPercent" : "40%",
-        "lecturer" : "Tuğba SÜZEK" 
+        "lecturer" : "Tuğba SÜZEK"  ,
+        "acts" : "6"
     },
     {
         "courseName" : "Mobile Application Development",
@@ -21,7 +23,8 @@
         "courseFaculty" : "1",
         "courseDepartment" : "CENG",
         "midtermPercent" : "30%",
-        "lecturer" : "Özgür KILIÇ" 
+        "lecturer" : "Özgür KILIÇ" ,
+        "acts" : "6"
     },
     {
         "courseName" : "TURKISH I",
@@ -29,7 +32,8 @@
         "courseFaculty" : "4",
         "courseDepartment" : "4",
         "midtermPercent" : "40%",
-        "lecturer" : "Fatma AYAN" 
+        "lecturer" : "Fatma AYAN" ,
+        "acts" : "2"
     },
     {
         "courseName" : "PRINCIPLES OF KEMAL ATATURK I",
@@ -37,6 +41,7 @@
         "courseFaculty" : "4",
         "courseDepartment" : "4",
         "midtermPercent" : "40%",
-        "lecturer" : "Tuğba ÇALIŞKAN" 
+        "lecturer" : "Tuğba ÇALIŞKAN" ,
+        "acts" : "4"
     }
 ]

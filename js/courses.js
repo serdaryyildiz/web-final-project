@@ -1,6 +1,6 @@
 
 export class Course{
-    constructor(courseName ,courseID , lecturer , courseFaculty , courseDepartment , midtermPercent ){
+    constructor(courseName ,courseID , lecturer , courseFaculty , courseDepartment , midtermPercent , acts ){
         this.courseID = courseID;
         this.lecturer = lecturer;
         this.courseName = courseName;
@@ -8,16 +8,7 @@ export class Course{
         this.courseDepartment = courseDepartment;
         this.midtermPercent = midtermPercent;
         this.finalPerc = 100 - midtermPercent;
-    }
-
-    constructor(courseId){
-        this.courseID = courseID;
-        this.lecturer = this.getCourseLecturer;
-        this.courseName = this.getCourseName;
-        this.courseFaculty = this.getCourseFaculty;
-        this.courseDepartment = this.getCourseDepartment;
-        this.midtermPercent = this.getMidtermPercent;
-        this.finalPerc = 100 - this.getMidtermPercent;
+        this.acts = acts;
     }
 
     getCourseName(){

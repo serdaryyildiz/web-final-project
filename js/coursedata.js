@@ -1,24 +1,59 @@
 import {getCourseData , getCourseDataLength} from "../js/storagelocal.js";
+import { Course } from "./courses.js";
 
 const courseData = getCourseData();
 const courseDataLength = getCourseDataLength();
 
+export function getCourseList(){
+    var courses = [];
+    var course = getCourseData();
+    for(let i = 0 ; i < getCourseDataLength() ; i++){
+        var arrayCourse = new Course(
+            course[i].courseName ,
+            course[i].courseID ,
+            course[i].lecturer,
+            course[i].courseFaculty,
+            course[i].courseDepartment,
+            course[i].midtermPercent,
+            course[i].acts
+        )
+        courses.push(arrayCourse)
+    }
+    console.log(courses);
+    return courses;
+}
+
 //This method returns course object with same ID.
-function findCourseById(courseID){
+function findCoursetById(courseID){
     try{
-        const course = coursesData.find(course => course.courseID === courseID); 
-        return course;
-    } catch(err){
-        console.log("Find course by id error , error : \n" + err);
+        const courses = getCourseList();
+        for(let val = 0 ; val < courses.length ; val++){
+            if (courseID === courses[val].courseID){
+                return courses[val];
+            } else{
+                console.log("bulunamadi");
+                return "Course has not been found .";
+            }
+        }
+    }  catch (err) {
+        console.log("findCoursetById error , error : \n" +err);
     }
 }
 
 //This method returns index of that course with same ID.
-function findCourseIndex(courseID){
+function findCourseName(courseName){
     try{
-        return courseData.findIndex(course => course.courseID === courseID); 
-    } catch(err){
-        console.log("Find course index error , error : \n" + err);
+        const courses = getCourseList();
+        for(let val = 0 ; val < courses.length ; val++){
+            if (courseName === courses[val].courseName){
+                return courses[val];
+            } else{
+                console.log("bulunamadi");
+                return "Course has not been found .";
+            }
+        }
+    }  catch (err) {
+        console.log("findCoursetByName error , error : \n" +err);
     }
 }
 
@@ -55,8 +90,9 @@ function addNewCourse(courseName , courseID , courseFaculty , courseDepartment ,
 
 function doesCourseExist(courseID){         //This function checking Course with that ID is exists or not.
     let exist = false;
-    for(let i = 0 ; i < getCourseDataLength() ; i++){
-        if(courseID === courseData[i].courseID){
+    const courses = getCourseList();
+    for(let i = 0 ; i < courses.length ; i++){
+        if(courseID === courses[i].courseID){
             exist = true;
         }
     }
@@ -82,4 +118,41 @@ function updateCourse(courseID , updatedCourseName , midtermPercent , lecturer){
     } catch (err) {
         console.log("Update course error , error :\n " +err);
     }
+}
+
+export function createCourseTable(domElement){
+    const courseTable = domElement;
+    const courses = getCourseList();
+    //Clearing table HTML
+    courseTable.innerHTML = "";
+
+    //Table header
+    const headerRow = courseTable.insertRow();
+    headerRow.insertCell().textContent = "Course ID";
+    headerRow.insertCell().textContent = "Course Name";
+    headerRow.insertCell().textContent = "Lecturer";
+    headerRow.insertCell().textContent = "Course Department";
+    headerRow.insertCell().textContent = "ACTS";
+    headerRow.style.backgroundColor = "#303030";
+    headerRow.style.color = "whitesmoke";
+
+    // Iterate through students and create table rows
+    for (let i = 0; i < courses.length; i++) {
+        const row = courseTable.insertRow();
+        row.insertCell().textContent = courses[i].courseID;
+        row.insertCell().textContent = courses[i].courseName;
+        row.insertCell().textContent = courses[i].lecturer;
+        row.insertCell().textContent = courses[i].courseDepartment;
+        row.insertCell().textContent = courses[i].acts;
+        
+        //Background color depends on index
+        if (i % 2 === 1) {
+          row.style.backgroundColor = "#B9B4C7";
+          row.style.color = "49415c";
+        } else {
+          row.style.backgroundColor = "#49415c";
+          row.style.color = "#B9B4C7";
+        }
+      }
+      return courseTable.innerHTML;
 }

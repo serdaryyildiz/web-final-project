@@ -1,3 +1,5 @@
+import { Student } from "../js/students.js";
+
 const studentsJsonPath = "../json/students.json";
 const stInfosJsonPath = "../json/studentInfo.json";
 const coursesJsonPath = "../json/courses.json";
@@ -9,7 +11,6 @@ const studentsInfoData = JSON.parse(localStorage.getItem("studentInfos")) || [];
 
 let courseDataLength = courseData.length;
 let studentsDataLength = studentsData.length;
-let studentsInfoDataLength = studentsInfoData.length;
 
 async function getJson(path) {
     const response = await fetch(path);
