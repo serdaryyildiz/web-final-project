@@ -1,9 +1,6 @@
 import {getCourseData , getCourseDataLength} from "../js/storagelocal.js";
 import { Course } from "./courses.js";
 
-const courseData = getCourseData();
-const courseDataLength = getCourseDataLength();
-
 export function getCourseList(){
     var courses = [];
     var course = getCourseData();
@@ -117,6 +114,15 @@ function updateCourse(courseID , updatedCourseName , midtermPercent , lecturer){
         }
     } catch (err) {
         console.log("Update course error , error :\n " +err);
+    }
+}
+
+export function getCourseMidtermPercent(courseId){
+    try{
+        const course = findCourseById(courseId);
+        return course.midtermPercent;
+    }catch (err){
+        console.log("getCourseMidtermPercent error , error : \n" +err);
     }
 }
 

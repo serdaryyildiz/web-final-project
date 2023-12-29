@@ -1,9 +1,6 @@
 import { getStudentsData , getStudentDataLength , getStudentsInfoData} from "../js/storagelocal.js";
 import { Student } from "../js/students.js";
 
-const studentsData = getStudentsData();
-const studentsInfoData = getStudentsInfoData();
-
 export function getStudentList(){
     var students = [];
     var student = getStudentsData();
@@ -87,6 +84,8 @@ function doesStudentExist(studentID){       //This function checking Student wit
     return true;
 }
 
+
+// BU FONKSİYONU GÜNCELLEMEN GEREKİYO , HATTA BÜTÜN UPDATE FONKSİYONLARI DEĞİŞTİRMEN LAZIM .
 function updateStudent(studentID, updatedName , updatedSurname) {
     try {
         const index = findStudentIndex(studentID);

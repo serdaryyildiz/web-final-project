@@ -6,13 +6,13 @@
         [
             {
                 "courseID" : "CENG3507",
-                "midterm" : "90",
-                "final" : "75"
+                "midtermGrade" : "90",
+                "finalGrade" : "75"
             },
             {
                 "courseID" : "CENG3545",
-                "midterm" : "88" ,
-                "final" : "93"
+                "midtermGrade" : "88" ,
+                "finalGrade" : "93"
             }
         ]
     }

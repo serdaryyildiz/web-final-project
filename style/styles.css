@@ -35,6 +35,27 @@ ul {
     display: none !important; /* !important method is useful for class priorities */
 }
 
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 0.8rem;
+
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #B9B4C7; 
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #352F44; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #5C5470; 
+  }
 
 nav {
     position: fixed;
@@ -114,16 +135,31 @@ nav {
 .table{
     border: 3px solid #352F44;
     font-style: italic;
+    font-size: 1.2rem;
 }
 
-#students-table{
-    width: 60vw;
-    height: 80vh;
+#students-table {
+    width: 50%;
+}
+
+#students-table tr{
+    line-height: 3vh;
 }
 
 #coursesTable{
-    width: 80%;
-    height: 25vh;
+    width: 65%;
+}
+
+#coursesTable tr{
+    line-height: 4vh;
+}
+
+#faculties-table{
+    width: 85%;
+}
+
+#faculties-table tr{
+    line-height: 5vh;
 }
 
 .buttons{
