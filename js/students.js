@@ -8,8 +8,6 @@ export class Student{  //constructor class to manage student object
         this.studentId = studentId;
     }
 
-    
-
     getStudentName(){
         return this.name;
     }
@@ -25,8 +23,6 @@ export class Student{  //constructor class to manage student object
         }
         return isValid;
     }
-
-    
 
     toString() {
         return this.name + " " + this.surname ;

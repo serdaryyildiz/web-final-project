@@ -1,6 +1,7 @@
 [
     {
         "studentID" : "200709051",
+        "studentDepartment" : "CENG",
         "studentCourseInfos" : 
         [
             {
@@ -10,7 +11,8 @@
             },
             {
                 "courseID" : "CENG3545",
-                "Midterm Grade" : "88"
+                "midterm" : "88" ,
+                "final" : "93"
             }
         ]
     }
