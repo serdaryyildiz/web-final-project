@@ -17,6 +17,7 @@ let courseDataLength = courseData.length;
 let studentsDataLength = studentsData.length;
 let facultiesDataLength = facultiesData.length;
 let departmentsDataLength = departmentsData.length;
+let studentsInfoDataLength = studentsInfoData.length;
 
 async function getJson(path) {
     const response = await fetch(path);
@@ -87,6 +88,10 @@ export function getStudentsInfoData(){
     return studentsInfoData;
 }
 
+export function getStudentsInfoDataLength(){
+    return studentsInfoDataLength;
+}
+
 export function getFacultiesData(){
     return facultiesData;
 }
@@ -104,5 +109,6 @@ export default {
     getFacultiesData,
     getFacultiesDataLength,
     getDepartments,
-    getDepartmentsLength
+    getDepartmentsLength,
+    getStudentsInfoDataLength
 }

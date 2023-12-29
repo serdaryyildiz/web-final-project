@@ -19,7 +19,7 @@ export function getStudentList(){
     return students;
 }
 //This method returns student object with same ID.
-function findStudentById(studentID){
+export function findStudentById(studentID){
     try{
         const students = getStudentList();
         for(let val = 0 ; val < getStudentList.length ; val++){

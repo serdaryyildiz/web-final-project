@@ -24,7 +24,7 @@ export function getCourseList(){
 }
 
 //This method returns course object with same ID.
-function findCoursetById(courseID){
+export function findCourseById(courseID){
     try{
         const courses = getCourseList();
         for(let val = 0 ; val < courses.length ; val++){
