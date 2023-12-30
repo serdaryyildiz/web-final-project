@@ -5,15 +5,17 @@ import { Department } from "./department.js";
 const facultiesData = getFacultiesData();
 let departmentList = [];
 
+setFacultiesList();
 setDepartmentsToFaculty();
 
 export function getDepartmentList(){
     return departmentList;
 }
 
-/* This method returns */
-export function getFacultiesList(){
-    var facultiesList = [];
+var facultiesList = [];
+/* This method sets list of faculties to the program */
+function setFacultiesList(){
+    
     var faculties = getFacultiesData();
     for(let i = 0 ; i < getFacultiesDataLength() ; i++){
         var faculty = new Faculty(
@@ -23,19 +25,13 @@ export function getFacultiesList(){
         );
         facultiesList.push(faculty);
         console.log("faculty added");
-        // if(faculties[i].departments.length !== 0){
-        //     for(let j = 0 ; j < faculties[i].departments.length ; j++){
-        //         var department = new Department(
-        //             faculties[i].departments[j].departmentName ,
-        //             faculties[i].departments[j].departmentId ,
-        //             faculties[i]
-        //         );
-        //         departmentList.push(department);
-        //         console.log("department added");
-        //     }
-        // }
     }
     console.log(facultiesList);
+}
+
+
+
+export function getFacultiesList(){
     return facultiesList;
 }
 

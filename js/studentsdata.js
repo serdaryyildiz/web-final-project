@@ -1,8 +1,10 @@
 import { getStudentsData , getStudentDataLength , getStudentsInfoData} from "../js/storagelocal.js";
 import { Student } from "../js/students.js";
 
-export function getStudentList(){
-    var students = [];
+var students = [];
+setStudentList();
+
+function setStudentList(){
     var student = getStudentsData();
     for(let i = 0 ; i < getStudentDataLength() ; i++){
         var arrayStudent = new Student(
@@ -13,8 +15,12 @@ export function getStudentList(){
         students.push(arrayStudent)
     }
     console.log(students);
+}
+
+export function getStudentList(){
     return students;
 }
+
 //This method returns student object with same ID.
 export function findStudentById(studentID){
     try{
@@ -52,6 +58,7 @@ function findStudentByName(studentname){
 //If student does not exists , we are pushing new student to student array from localStorage. 
 function addStudent(studentName , studentSurname , studentID){
     try{
+        const studentsData = getStudentList(); 
         if(isStudentIdValid){
             var newStudent = new Student(
                 newStudent.name = studentName,
@@ -85,10 +92,11 @@ function doesStudentExist(studentID){       //This function checking Student wit
 }
 
 
-// BU FONKSİYONU GÜNCELLEMEN GEREKİYO , HATTA BÜTÜN UPDATE FONKSİYONLARI DEĞİŞTİRMEN LAZIM .
+//This method finds students index at studentList , changes it . Also we are updating localStorage .
 function updateStudent(studentID, updatedName , updatedSurname) {
     try {
-        const index = findStudentIndex(studentID);
+        const studentsData = getStudentList();
+        const index = findStudentById(studentID);
         if (index !== -1) {     //index === -1 means that student has not found.
             studentsData[index] = {
                 "studentName" : updatedName,
@@ -104,6 +112,12 @@ function updateStudent(studentID, updatedName , updatedSurname) {
     } catch (err) {
         console.log("Update student error , error :\n" + err);
     }
+}
+
+function updateStudentName(updatedName , updatedSurname , studentId){
+    const students = getStudentList();
+    student.studentName = updatedName;
+    student.studentSurname = updateStudentName;
 }
 
 export function createStudentTable(domElement) {

@@ -1,8 +1,10 @@
 import {getCourseData , getCourseDataLength} from "../js/storagelocal.js";
 import { Course } from "./courses.js";
 
-export function getCourseList(){
-    var courses = [];
+var courses = [];
+
+
+function setCourseList(){
     var course = getCourseData();
     for(let i = 0 ; i < getCourseDataLength() ; i++){
         var arrayCourse = new Course(
@@ -17,6 +19,10 @@ export function getCourseList(){
         courses.push(arrayCourse)
     }
     console.log(courses);
+}
+setCourseList();
+
+export function getCourseList(){
     return courses;
 }
 

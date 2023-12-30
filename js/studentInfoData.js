@@ -2,8 +2,10 @@ import { findCourseById } from "../js/coursedata.js";
 import { getStudentsInfoData , getStudentsInfoDataLength} from "../js/storagelocal.js";
 import { findStudentById } from "../js/studentsdata.js";
 
-export function getStudentInfoList(){
-    var studentInfo = [];
+var studentInfo = [];
+setStudentInfoList();
+
+function setStudentInfoList(){
     var info = getStudentsInfoData();
     for(let i = 0 ; i < getStudentsInfoDataLength() ; i++){
         var arrayInfo = 
@@ -12,15 +14,51 @@ export function getStudentInfoList(){
             "studentDepartment" : info[i].studentDepartment,
             "studentCourseInfos" : info[i].studentCourseInfos
         }
-        courses.push(arrayInfo)
+        studentInfo.push(arrayInfo)
     }
     console.log(studentInfo);
+}
+    
+export function getStudentInfoList(){
     return studentInfo;
 }
 
+function findStudentIndex(studentId){
+    try {
+        const studentInfo = getStudentInfoList();
+        for(let val = 0 ; val < studentInfo.length ; val++ ){
+            if(studentInfo[val].studentID === studentId){
+                return val;
+            }else {
+                console.log("findstudentindex has not been found");
+                return -1;
+            }
+        }
+    } catch (err){
+        console.log("findStudentIndex error , err : \n"+err);
+    }
+}
+
+function findCourseInfosIndex(courseId , studentId){
+    try {
+        const studentInfo = getStudentInfoList();
+        const studentIndex = findStudentIndex(studentId);
+        for(let val = 0 ; val < studentInfo[studentIndex].studentCourseInfos.lengt ; val++){
+            if(studentInfo[studentIndex].studentCourseInfos[val].courseID === courseId){
+                return val;
+            }else {
+                console.log("courseinfosindex has not been found")
+                return -1;
+            }
+        }
+    }catch(err){
+        console.log("findCourseInfosIndex error , error : \n"+err);
+    }
+}
 
 function findStudentInStudentInfos(studentId){
     try{
+        const studentInfo = getStudentInfoList();
         for(let val = 0 ; val < getStudentsInfoDataLength() ; val++){
             if(studentInfo[val].studentID === studentId){
                 return  studentInfo[val];
@@ -66,10 +104,6 @@ export function findCourseInfosOfSelectedStudent(courseId , studentId){
     }
 }
 
-export function getGradesOfCourse(studentId){
-    
-}
-
 //Getting student from studentId , then iterating in studentCourseInfos at studentInfo.json file , then returns courses of student
 //Also this method returms midterm and final grade of student . So i can calculate students average with this function. 
 
@@ -113,4 +147,30 @@ export function getStudentsOfCourse(courseId){
         return "Course does not have any student."
     }
     return students;
+}
+
+export function updateStudentsGrades(courseId , studentId , updatedMidterm , updatedFinal){
+    try {
+        const studentInfoList = getStudentInfoList();
+        const studentIndex = findStudentIndex(studentId);
+        const courseIndex = findCourseInfosIndex(courseId);
+        if(studentIndex !== -1){
+            if(courseIndex !== -1){
+                studentInfoList[studentIndex].studentCourseInfos[courseIndex] = {
+                    "courseID" : courseId ,
+                    "midtermGrade" : updatedMidterm,
+                    "finalGrade" : updatedFinal
+                };
+                localStorage.setItem("studentInfos" , JSON.stringify(studentInfoList));
+                console.log("Student grades has been updated.");
+            }else{
+                return "Course has not been found.";
+            }
+        }else{
+            return "Student has not been found.";
+        }
+
+    }catch(err){
+        console.log("updateStudentsGrades error , error : \n"+err);
+    }
 }
