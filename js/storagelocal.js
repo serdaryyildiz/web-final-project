@@ -2,6 +2,7 @@ import { Student } from "../js/students.js";
 import { Faculty } from "./faculties.js";
 import { Department } from "./department.js";
 
+
 const studentsJsonPath = "../json/students.json";
 const stInfosJsonPath = "../json/studentInfo.json";
 const coursesJsonPath = "../json/courses.json";
@@ -20,10 +21,17 @@ let departmentsDataLength = departmentsData.length;
 let studentsInfoDataLength = studentsInfoData.length;
 
 async function getJson(path) {
-    const response = await fetch(path);
-    const data = await response.json();
-    return data;
+    try{
+        const response = await fetch(path);
+        const data = await response.json();
+        return data;
+    } catch(err){
+        console.log("getJson error , error : \n" , err);
+    }
+
 }
+
+
 
 async function setLocalStorage() {  
     try {
@@ -44,21 +52,7 @@ async function setLocalStorage() {
 }
 setLocalStorage();
 
-export function setDepartments(){
-    const faculties = getFacultiesData();
-    faculties.forEach(faculty => {
-        if(faculty.departments && faculty.departments.length > 0) {
-            faculty.departments.forEach(department => {
-                var newDepartment = new Department(
-                    department.departmentName ,
-                    department.departmentID,
-                    faculty.facultyID
-                );
-                departmentsData.push(newDepartment);
-            })
-        }
-    });
-}
+
 
 export function getDepartments(){
     return departmentsData;
@@ -99,6 +93,8 @@ export function getFacultiesData(){
 export function getFacultiesDataLength(){
     return facultiesDataLength;
 }
+
+
 
 export default {
     getCourseData,

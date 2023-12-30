@@ -1,10 +1,9 @@
-import { getStudentsData , getStudentDataLength , getStudentsInfoData} from "../js/storagelocal.js";
+import { getStudentsData , getStudentDataLength} from "../js/storagelocal.js";
 import { Student } from "../js/students.js";
 
-var students = [];
-setStudentList();
-
 function setStudentList(){
+    try{
+    const students = [];
     var student = getStudentsData();
     for(let i = 0 ; i < getStudentDataLength() ; i++){
         var arrayStudent = new Student(
@@ -15,10 +14,18 @@ function setStudentList(){
         students.push(arrayStudent)
     }
     console.log(students);
+    return students;
+    }catch(err){
+        console.log("setStudentList error , error : \n" , err);
+    } 
 }
 
 export function getStudentList(){
-    return students;
+    try{
+        return setStudentList();
+    } catch(err){
+        console.log("student list is empty , error : \n" , err);
+    }
 }
 
 //This method returns student object with same ID.
@@ -112,12 +119,6 @@ function updateStudent(studentID, updatedName , updatedSurname) {
     } catch (err) {
         console.log("Update student error , error :\n" + err);
     }
-}
-
-function updateStudentName(updatedName , updatedSurname , studentId){
-    const students = getStudentList();
-    student.studentName = updatedName;
-    student.studentSurname = updateStudentName;
 }
 
 export function createStudentTable(domElement) {

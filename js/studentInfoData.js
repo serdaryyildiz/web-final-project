@@ -2,10 +2,10 @@ import { findCourseById } from "../js/coursedata.js";
 import { getStudentsInfoData , getStudentsInfoDataLength} from "../js/storagelocal.js";
 import { findStudentById } from "../js/studentsdata.js";
 
-var studentInfo = [];
-setStudentInfoList();
+
 
 function setStudentInfoList(){
+    var studentInfo = [];
     var info = getStudentsInfoData();
     for(let i = 0 ; i < getStudentsInfoDataLength() ; i++){
         var arrayInfo = 
@@ -18,9 +18,13 @@ function setStudentInfoList(){
     }
     console.log(studentInfo);
 }
-    
+
 export function getStudentInfoList(){
-    return studentInfo;
+    try {
+        return setStudentInfoList();
+    } catch (err){
+        console.log("stundent info list is empty , error : \n" , err);
+    }
 }
 
 function findStudentIndex(studentId){

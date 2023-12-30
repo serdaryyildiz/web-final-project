@@ -5,17 +5,16 @@ import { Department } from "./department.js";
 const facultiesData = getFacultiesData();
 let departmentList = [];
 
-setFacultiesList();
-setDepartmentsToFaculty();
+
 
 export function getDepartmentList(){
     return departmentList;
 }
 
-var facultiesList = [];
+
 /* This method sets list of faculties to the program */
 function setFacultiesList(){
-    
+    const facultiesList = [];
     var faculties = getFacultiesData();
     for(let i = 0 ; i < getFacultiesDataLength() ; i++){
         var faculty = new Faculty(
@@ -27,12 +26,33 @@ function setFacultiesList(){
         console.log("faculty added");
     }
     console.log(facultiesList);
+    return facultiesList;
 }
 
 
 
 export function getFacultiesList(){
-    return facultiesList;
+    try{
+        return setFacultiesList();
+    }catch (err){
+        console.log("faculties list is empty, error : \n" , err);
+    }
+}
+
+export function setDepartments(){
+    const faculties = getFacultiesData();
+    faculties.forEach(faculty => {
+        if(faculty.departments && faculty.departments.length > 0) {
+            faculty.departments.forEach(department => {
+                var newDepartment = new Department(
+                    department.departmentName ,
+                    department.departmentID,
+                    faculty.facultyID
+                );
+                departmentsData.push(newDepartment);
+            })
+        }
+    });
 }
 
 function setDepartmentsToFaculty(){
@@ -128,7 +148,7 @@ function addFaculty(facultyName , facultyID , departments){
 
 export function createFacultiesTable(domElement) {
     const facultiesTable = domElement;
-    const faculties = getFacultiesList();
+    let faculties = getFacultiesList();
     // Clear any existing table content
     facultiesTable.innerHTML = "";
   

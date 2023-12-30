@@ -1,30 +1,42 @@
 import {getCourseData , getCourseDataLength} from "../js/storagelocal.js";
 import { Course } from "./courses.js";
 
-var courses = [];
 
 
-function setCourseList(){
-    var course = getCourseData();
-    for(let i = 0 ; i < getCourseDataLength() ; i++){
-        var arrayCourse = new Course(
-            course[i].courseName ,
-            course[i].courseID ,
-            course[i].lecturer,
-            course[i].courseFaculty,
-            course[i].courseDepartment,
-            course[i].midtermPercent,
-            course[i].acts
-        )
-        courses.push(arrayCourse)
+export function setCourseList() {
+    try {
+      const courses = []; 
+  
+      const courseData = getCourseData(); //we need data first.
+  
+      for (let i = 0; i < getCourseDataLength(); i++) {
+        const arrayCourse = new Course(
+          courseData[i].courseName,
+          courseData[i].courseID,
+          courseData[i].lecturer,
+          courseData[i].courseFaculty,
+          courseData[i].courseDepartment,
+          courseData[i].midtermPercent,
+          courseData[i].acts
+        );
+        courses.push(arrayCourse);
+      }
+  
+      console.log(courses);
+      return courses; // this method returns courses array . (Because of initialization errors)
+    } catch (err) {
+      console.log("setCourseList error, error: \n", err);
     }
-    console.log(courses);
-}
-setCourseList();
-
-export function getCourseList(){
-    return courses;
-}
+  }
+  
+  // getCourseList fonksiyonunu direkt setCourseList'i çağıracak şekilde değiştir
+  export function getCourseList() {
+    try {
+      return setCourseList();
+    } catch (err) {
+      console.log("course list is empty, error: \n" + err);
+    }
+  }
 
 //This method returns course object with same ID.
 export function findCourseById(courseID){
