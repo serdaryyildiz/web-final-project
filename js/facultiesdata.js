@@ -1,4 +1,4 @@
-import { getFacultiesData , getFacultiesDataLength , getDepartments , getDepartmentsLength } from "../js/storagelocal.js";
+import { getFacultiesData , getFacultiesDataLength , getDepartments} from "../js/storagelocal.js";
 import { Faculty } from "../js/faculties.js";
 import { Department } from "./department.js";
 

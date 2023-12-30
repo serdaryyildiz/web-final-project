@@ -3,9 +3,9 @@ import { getStudentsInfoData , getStudentsInfoDataLength} from "../js/storageloc
 import { findStudentById } from "../js/studentsdata.js";
 
 
+var studentInfo = [];
 
 function setStudentInfoList(){
-    var studentInfo = [];
     var info = getStudentsInfoData();
     for(let i = 0 ; i < getStudentsInfoDataLength() ; i++){
         var arrayInfo = 
@@ -16,30 +16,29 @@ function setStudentInfoList(){
         }
         studentInfo.push(arrayInfo)
     }
-    console.log(studentInfo);
+    return studentInfo;
 }
 
 export function getStudentInfoList(){
     try {
-        return setStudentInfoList();
+        return studentInfo;
     } catch (err){
         console.log("stundent info list is empty , error : \n" , err);
     }
 }
 
-function findStudentIndex(studentId){
+function findStudentIndex(studentId) {
     try {
         const studentInfo = getStudentInfoList();
-        for(let val = 0 ; val < studentInfo.length ; val++ ){
-            if(studentInfo[val].studentID === studentId){
+        for (let val = 0; val < studentInfo.length; val++) {
+            if (studentInfo[val].studentId === studentId) {
                 return val;
-            }else {
-                console.log("findstudentindex has not been found");
-                return -1;
             }
         }
-    } catch (err){
-        console.log("findStudentIndex error , err : \n"+err);
+        console.log("Student has not been found");
+        return -1; // If method can't find the student , it will return -1.
+    } catch (err) {
+        console.log("findStudentIndex error , err : \n" + err);
     }
 }
 
@@ -60,16 +59,21 @@ function findCourseInfosIndex(courseId , studentId){
     }
 }
 
-function findStudentInStudentInfos(studentId){
-    try{
-        const studentInfo = getStudentInfoList();
-        for(let val = 0 ; val < getStudentsInfoDataLength() ; val++){
-            if(studentInfo[val].studentID === studentId){
-                return  studentInfo[val];
+function findStudentInStudentInfos(studentId) {
+    try {
+        var studentInfo = getStudentInfoList();
+        for (let val = 0; val < studentInfo.length; val++) {
+            if (studentInfo[val].studentId === studentId) {
+                console.log("Student found:", studentInfo[val]);
+                console.log("Student 3 : " , studentInfo[3]);
+                return studentInfo[val];
             }
         }
-    } catch(err){
-        console.log("findStudentInStudentInfos error , error : \n" +err);
+        console.log("asdasdasdasdasd\n" ,studentInfo);
+        console.log("length : " +studentInfo.length);
+        console.log("Student not found.");
+    } catch (err) {
+        console.log("findStudentInStudentInfos error , error : \n", err);
     }
 }
 
@@ -115,23 +119,23 @@ export function getCoursesOfStudent(studentId){
     try{
         let studentInfo = getStudentInfoList();
         let courses = [];
-        const student = findStudentInStudentInfos(studentId);
-        if(student.studentCourseInfos.length !== 0){
-            for(let val = 0 ; val < student.studentCourseInfos.lengt ; val++){
+        var student = findStudentIndex(studentId);
+        if(courses.length !== 0){
+            for(let val = 0 ; val < studentInfo[student].studentCourseInfos.length ; val++){
                 const courseAndGrades = {
-                    "course" : findCourseById(studentInfo[val].studentCourseInfos[i].courseID),
-                    "midtermGrade" : studentInfo[val].studentCourseInfos[i].midtermGrade,
-                    "finalGrade" : studentInfo[val].studentCourseInfos[i].finalGrade
+                    "course" : findCourseById(studentInfo[student].studentCourseInfos[val].courseID),
+                    "midtermGrade" : studentInfo[student].studentCourseInfos[val].midtermGrade,
+                    "finalGrade" : studentInfo[student].studentCourseInfos[val].finalGrade
                 }
                 courses.push(courseAndGrades);
             }
             return courses;
         }else{
-            console.log(studentInfo[val] + " has not any courses");
+            console.log("Student has not any courses");
         }
         return courses;
     } catch(err){
-        console.log("getCoursesOfStudent error , error : \n"+err);
+        console.log("getCoursesOfStudent error , error : \n",err);
     }
 }
 
@@ -139,6 +143,7 @@ export function getCoursesOfStudent(studentId){
 export function getStudentsOfCourse(courseId){
     let studentInfo = getStudentInfoList();
     let students = [];
+    console.log(getStudentsInfoDataLength());
     for(let val = 0 ; val < getStudentsInfoDataLength() ; val++){
         for(let i = 0 ; i < studentInfo[val].studentCourseInfos.length ; i++){
             if(studentInfo[val].studentCourseInfos[i].courseID === courseId){
@@ -177,4 +182,10 @@ export function updateStudentsGrades(courseId , studentId , updatedMidterm , upd
     }catch(err){
         console.log("updateStudentsGrades error , error : \n"+err);
     }
+}
+
+export function createStudentsInfoTable(studentId){
+    const studentInfo = getStudentInfoList();
+    //Clear any existing table content
+
 }

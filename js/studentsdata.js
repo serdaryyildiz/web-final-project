@@ -1,24 +1,31 @@
-import { getStudentsData , getStudentDataLength} from "../js/storagelocal.js";
+import { getStudentsData , getStudentDataLength , setLocalStorage} from "../js/storagelocal.js";
 import { Student } from "../js/students.js";
 
-function setStudentList(){
+var studentList = []; 
+
+async function setStudentList(){
     try{
+    await setLocalStorage();
     const students = [];
-    var student = getStudentsData();
-    for(let i = 0 ; i < getStudentDataLength() ; i++){
-        var arrayStudent = new Student(
+    let student = getStudentsData();
+    console.log(getStudentDataLength());
+    for(let i = 0 ; i < student.length ; i++){
+        let arrayStudent = new Student(
             student[i].studentName ,
             student[i].studentSurname ,
             student[i].studentID
         )
-        students.push(arrayStudent)
+        students.push(arrayStudent);
+        studentList.push(arrayStudent);
     }
-    console.log(students);
+    console.log("studentlist : \n" ,studentList);
     return students;
     }catch(err){
         console.log("setStudentList error , error : \n" , err);
     } 
 }
+
+setStudentList();
 
 export function getStudentList(){
     try{
@@ -31,23 +38,22 @@ export function getStudentList(){
 //This method returns student object with same ID.
 export function findStudentById(studentID){
     try{
-        const students = getStudentList();
-        for(let val = 0 ; val < getStudentList.length ; val++){
-            if (studentID === students[val].studentId){
-                return students[val];
+        for(let val = 0 ; val < studentList.length ; val++){
+            if (studentID === studentList[val].studentId){
+                return studentList[val];
             }
         }
         console.log("bulunamadi");
         return -1;
     }  catch (err) {
-        console.log("findStudentById error , error : \n" +err);
+        console.log("findStudentById error , error : \n" ,err);
     }
 }
 
 //This method returns index of that student with same ID.
 function findStudentByName(studentname){
     try{
-        const students = getStudentList();
+        const students = studentList;
         for(let val = 0 ; val < students.length ; val++){
             if (studentname === students[val].name){
                 return students[val];
@@ -57,26 +63,37 @@ function findStudentByName(studentname){
         console.log("bulunamadi");
         return "Student has not been found .";
     }catch(err){
-        console.log("Find student by name error , error :\n" + err);
+        console.log("Find student by name error , error :\n" , err);
     }   
 }
 
+function isStudentIdValid(studentID){
+    let isValid = true;
+    if(studentID <= 99999999 || studentID >= 1000000000){
+        isValid = false
+    }
+    return isValid;
+}
+
+
 //This function creates new student with JSON format , then if student exist method returns a warning message .
 //If student does not exists , we are pushing new student to student array from localStorage. 
-function addStudent(studentName , studentSurname , studentID){
+export function addStudent(studentName , studentSurname , studentID){
     try{
-        const studentsData = getStudentList(); 
-        if(isStudentIdValid){
-            var newStudent = new Student(
-                newStudent.name = studentName,
-                newStudent.surname = studentSurname,
-                newStudent.studentId = studentID
-            )
-            if(!doesStudentExist){
+        const studentsData = studentList; 
+        if(isStudentIdValid(studentID)){
+            console.log("calisti1");
+            var newStudent = {
+                "name" : studentName,
+                "surname" : studentSurname,
+                "studentId" : studentID
+            };
+            console.log("calisti2");
+            if(!doesStudentExist(studentID)){
                 studentsData.push(newStudent)
                 localStorage.setItem("students" , JSON.stringify(studentsData));
                 console.log(studentsData);
-                return "New student added.";
+                return newStudent;
             } else {
                 console.log("student exist");
                 return "Student alredy exist!";
@@ -86,7 +103,7 @@ function addStudent(studentName , studentSurname , studentID){
             return "Student ID is not valid ! ";
         }
     } catch(err) {
-        console.log("Add new student error , error :\n" +err);
+        console.log("Add new student error , error :\n" ,err);
     }
 }
 
@@ -100,9 +117,9 @@ function doesStudentExist(studentID){       //This function checking Student wit
 
 
 //This method finds students index at studentList , changes it . Also we are updating localStorage .
-function updateStudent(studentID, updatedName , updatedSurname) {
+function updateStudent(updatedName, updatedSurname , studentID) {
     try {
-        const studentsData = getStudentList();
+        const studentsData = studentList;
         const index = findStudentById(studentID);
         if (index !== -1) {     //index === -1 means that student has not found.
             studentsData[index] = {
@@ -123,7 +140,8 @@ function updateStudent(studentID, updatedName , updatedSurname) {
 
 export function createStudentTable(domElement) {
     const studentTable = domElement;
-    const students = getStudentList();
+    const students = studentList;
+    console.log("tableCreating : \n" +students);
     // Clear any existing table content
     studentTable.innerHTML = "";
   
@@ -132,6 +150,7 @@ export function createStudentTable(domElement) {
     headerRow.insertCell().textContent = "Student ID";
     headerRow.insertCell().textContent = "Student Name";
     headerRow.insertCell().textContent = "Student Surname";
+    //headerRow.insertCell().textContent = "ACTS"
     headerRow.style.backgroundColor = "#303030";
     headerRow.style.color = "whitesmoke";
   
@@ -141,6 +160,7 @@ export function createStudentTable(domElement) {
         row.insertCell().textContent = students[i].studentId;
         row.insertCell().textContent = students[i].name;
         row.insertCell().textContent = students[i].surname;
+        //row.insertCell().textContent = students[i].calculateStudentsAverage(students[i].studentId);
         
         //Background color depends on index
         if (i % 2 === 1) {
@@ -153,7 +173,30 @@ export function createStudentTable(domElement) {
       }
 
     
-  
     // Return table as a string
     return studentTable.innerHTML;
 }
+
+export function insertToStudentTable(domElement , name , surname , studentId){
+    const studentTable = domElement;
+    const row = studentTable.insertRow();
+    addStudent(name , surname , studentId);
+    row.insertCell().textContent = studentId;
+    row.insertCell().textContent = name;
+    row.insertCell().textContent = surname;
+    //row.insertCell().textContent = newStudent.calculateStudentsAverage(studentId);
+    
+    const background = studentList.length - 1;  //This method will also return 
+    //Background color depends on index
+    if (background % 2 === 1) {
+      row.style.backgroundColor = "#B9B4C7";
+      row.style.color = "49415c";
+    } else {
+      row.style.backgroundColor = "#49415c";
+      row.style.color = "#B9B4C7";
+    }
+    console.log(localStorage.getItem("students"));
+
+}
+
+// addStudent("asdasd" , "asdasd" , "1");

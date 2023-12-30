@@ -21,20 +21,14 @@ export class Student{  //constructor class to manage student object
         return this.surname;
     }
 
-    isStudentIdValid(studentID){
-        let isValid = true;
-        if(studentID <= 99999999 || studentID >= 1000000000){
-            isValid = false
-        }
-        return isValid;
-    }
+
 
     //This method returns students general average points based by 100.
     calculateStudentsAverage(studentId){
         const studentInfo = getCoursesOfStudent(studentId);
         let total = 0;
         if(studentInfo.length === 0){
-            return "Student has not any course.";
+            return "Its empty";
         }
         for(let val = 0 ; val < studentInfo.length ; val++){
             const courseMidtermPercent = studentInfo[val].midtermPercent;

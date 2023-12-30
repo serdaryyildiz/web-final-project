@@ -15,5 +15,56 @@
                 "finalGrade" : "93"
             }
         ]
+    },
+    {
+        "studentID" : "200709052",
+        "studentDepartment" : "CENG",
+        "studentCourseInfos" : 
+        [
+            {
+                "courseID" : "CENG3507",
+                "midtermGrade" : "86",
+                "finalGrade" : "74"
+            },
+            {
+                "courseID" : "CENG3545",
+                "midtermGrade" : "58" ,
+                "finalGrade" : "43"
+            }
+        ]
+    },
+    {
+        "studentID" : "200709081",
+        "studentDepartment" : "CENG",
+        "studentCourseInfos" : 
+        [
+            {
+                "courseID" : "CENG3507",
+                "midtermGrade" : "20",
+                "finalGrade" : "35"
+            },
+            {
+                "courseID" : "CENG3545",
+                "midtermGrade" : "51" ,
+                "finalGrade" : "22"
+            }
+        ]
+    },
+    {
+        "studentID" : "200709031",
+        "studentDepartment" : "CENG",
+        "studentCourseInfos" : 
+        [
+            {
+                "courseID" : "CENG3507",
+                "midtermGrade" : "65",
+                "finalGrade" : "47"
+            },
+            {
+                "courseID" : "CENG3545",
+                "midtermGrade" : "48" ,
+                "finalGrade" : "55"
+            }
+        ]
     }
 ]

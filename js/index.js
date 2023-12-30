@@ -1,5 +1,5 @@
 import storagelocal from "../js/storagelocal.js";
-import { createStudentTable } from "../js/studentsdata.js";
+import { createStudentTable ,insertToStudentTable , addStudent} from "../js/studentsdata.js";
 import { createCourseTable } from "../js/coursedata.js";
 import { createFacultiesTable } from "../js/facultiesdata.js";
 //DOM Elements
@@ -48,7 +48,17 @@ studentsBtn.addEventListener("click" , function() {
 
 stdAddButton.addEventListener("click" , function() {
     studentAddForm.classList.toggle("hidden");
+    studentAddForm.addEventListener("submit" , function(event) {
+        //event.preventDefault(); //It stops page re-loading.
+        //Get input from form :
+        const studentNameInput = document.getElementById("studentNameInput").value;
+        const studentSurnameInput = document.getElementById("studentSurnameInput").value;
+        const studentIdInput = document.getElementById("studentIdInput").value;
+        insertToStudentTable(studentTable ,studentNameInput , studentSurnameInput , studentIdInput);
+    });
 });
+
+
 
 // Javascript Section for faculty actions
 facultiesBtn.addEventListener("click" , function() {
@@ -67,6 +77,7 @@ function pageChange(page){
         }
     }
 }
+
 
 // storagelocal.updateCourse("ATB3801" , "ATATURK" , "30%" , "Serdar YILDIZ")
 // storagelocal.updateStudent("200709051" , "Kutay Hanzo" , "ÖZCAN")
