@@ -1,7 +1,6 @@
-import {getStudentsData} from "../js/storagelocal.js";
-import { findCourseFromSelectedStudent, findCourseInfosOfSelectedStudent, getCoursesOfStudent } from "../js/studentInfoData.js";
-import { findCourseById, getCourseMidtermPercent } from "../js/coursedata.js";
-import { findStudentById } from "./studentsdata.js";
+import { findCourseInfosOfSelectedStudent, getCoursesOfStudent } from "../js/studentInfoData.js";
+import {  getCourseMidtermPercent } from "../js/coursedata.js";
+
 
 
 
@@ -25,19 +24,19 @@ export class Student{  //constructor class to manage student object
 
     //This method returns students general average points based by 100.
     calculateStudentsAverage(studentId){
-        const studentInfo = getCoursesOfStudent(studentId);
+        const studentsInfo = getCoursesOfStudent(studentId);
         let total = 0;
-        if(studentInfo.length === 0){
+        if(studentsInfo.length === 0){
             return "Its empty";
         }
-        for(let val = 0 ; val < studentInfo.length ; val++){
-            const courseMidtermPercent = studentInfo[val].midtermPercent;
+        for(let val = 0 ; val < studentsInfo.length ; val++){
+            const courseMidtermPercent = studentsInfo[val].midtermPercent;
             const courseFinalPercent = 100 - courseMidtermPercent;
-            const midterm = (studentInfo[val].midtermGrade * courseMidtermPercent) / 100;
-            const final = (studentInfo[val].finalGrade * courseFinalPercent) / 100;
+            const midterm = (studentsInfo[val].midtermGrade * courseMidtermPercent) / 100;
+            const final = (studentsInfo[val].finalGrade * courseFinalPercent) / 100;
             total += (midterm + final); 
         }
-        return (total / studentInfo.length);
+        return (total / studentsInfo.length);
     }
 
     //This methojd return students letter grade by selected course (tenBased is a boolen)

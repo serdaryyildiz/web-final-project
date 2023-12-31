@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style/styles.css">
-    <script type="module" src="../js/index.js" defer></script>
+    <link rel="stylesheet" href="./style/styles.css">
+    <script type="module" src="./js/index.js" defer></script>
     <title>UNI OBS</title>
 </head>
 <body>
@@ -29,8 +29,6 @@
 
                         <li><a href="#" class="students-btn">Students</a></li>
 
-                        <li><a href="#" class="faculties-btn">Faculties</a></li>
-
                         <li><a href="#" class="contact-us-btn">Contact Us</a></li>
                     </ul>
                 </div>
@@ -41,11 +39,11 @@
                     <h1>HOME</h1>
                     <div class="home-content">
                         <p id="home-p">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis facilis eius quo excepturi atque inventore id minus, cumque veniam reiciendis modi perferendis et suscipit obcaecati, vel possimus, exercitationem quae tempora? Cum accusamus esse perspiciatis nemo ea modi, vel eaque sunt culpa ratione architecto inventore officia, beatae molestiae cumque illum placeat voluptate minima soluta. Porro repudiandae tempora cumque minus incidunt, cum earum corrupti eos ex culpa facilis quia debitis ipsum harum necessitatibus corporis nobis labore velit quibusdam. Eum sapiente voluptate quod, aliquam recusandae ducimus veritatis odit quasi expedita? Quisquam voluptas, possimus praesentium veritatis dignissimos dolor rem quia placeat consequatur ea libero? A excepturi similique libero aspernatur odio, facilis reiciendis sint delectus, molestias dolores laborum cum fuga! Qui temporibus velit cupiditate sit eligendi laborum doloremque vero nihil molestias quam laboriosam, soluta repellat repudiandae. Deleniti omnis sint esse beatae, et quas quam dolores architecto? Explicabo unde quisquam quibusdam aliquam et tenetur repellendus eaque quo exercitationem vero nobis atque temporibus nisi harum deleniti modi, adipisci in voluptatem. Blanditiis, libero magnam asperiores deserunt corporis quos consequuntur inventore. Quibusdam vitae aut perspiciatis quae a. Reiciendis recusandae itaque nemo unde neque a? Accusamus sunt, dolores, expedita praesentium esse dolor quisquam optio voluptate vero voluptates sapiente harum neque? Earum quo cum est, saepe maiores, aliquid facilis iste laboriosam animi doloremque quibusdam dolorem sunt ducimus magni obcaecati praesentium dolore! Error, mollitia. Impedit, omnis? Officia et, dolorum cum quae vel, earum quam autem incidunt debitis modi enim facere deleniti soluta deserunt minima eligendi repellat, officiis eos quisquam mollitia id iure.</p>
-                        <img src="../assets/uni.jpg" alt="universityimg" id="uni-img">
                     </div>
                     
                     
                 </div>
+
                 <div class="courses hidden page">
                    <span><h1>Courses</h1></span>
                    <p id="courseCount"></p>
@@ -53,7 +51,7 @@
                     <button class="btn add-btn" id="course-add">Add New Course</button>
                     <button class="btn update-btn" id="course-upd">Update Course</button>
                     <button class="btn delete-btn" id="course-dlt">Delete Course</button>
-                    <div id="course-add-form" class="form-border hidden">
+                    <div id="course-add-form" class="add course-form form-border hidden">
                         <form>
                             <div class="form-tag">
                                 <strong><h2>New Course Addition</h2><br></strong>
@@ -64,48 +62,90 @@
                                     <label for="courseIdInput"></label>
                                     <input type="text" id="courseIdInput" placeholder="Enter course ID">
                                 </div>
-                                <label for="courseNameInput"></label>
+                                
                                 <div class="input">
+                                    <label for="courseNameInput"></label>
                                     <input type="text" id="courseNameInput" placeholder="Enter course name">
                                 </div>
-                                <label for="courseLecturerInput"></label>
+                               
                                 <div class="input">
+                                    <label for="courseLecturerInput"></label>
                                     <input type="text" id="courseLecturerInput" placeholder="Enter course lecturer">
                                 </div>
-                                <label for="courseMidtermInput"></label>
+                                
                                 <div class="input">
+                                    <label for="courseMidtermInput"></label>
                                     <input type="text" id="courseMidtermInput" placeholder="Enter course midterm percent">
                                 </div>
-                                <label for="courseActsInput"></label>
+                                
                                 <div class="input">
+                                    <label for="courseActsInput"></label>
                                     <input type="text" id="courseActsInput" placeholder="Enter course ACTS">
                                 </div>
-                                <label for="courseFacultyInput"></label>
-                                <div class="input">
-                                    <input type="text" id="courseFacultyInput" placeholder="Enter course faculty">
-                                </div>
-                                <label for="courseDepartmentInput"></label>
-                                <div class="input">
-                                    <input type="text" id="courseDepartmentInput" placeholder="Enter course department">
-                                </div>
-                            </div>
-                            <div class="select-holder">
-                                <p>Please select course faculty </p>
-                                <label>
-                                    <select id = "faculty" name = "university">
-                                        <option value = "" disabled selected><p>Select faculty</p></option>
-                                        <option value="ENGINEERING"><p>Faculty of Engineering</p></option>
-                                        <option value="TECHNOLOGY"><p>Faculty of Technology</p></option>
-                                        <option value="HEALTHSC"><p>Faculty of Health Sciences</p></option>
-                                        <option value="RECTORATE"><p>Rectorate</p></option>
-                                    </select>
-                                </label>  
                             </div>
                             <div class="button-holder">
                                 <input type="submit" value="Add Course">
                             </div>
                         </form>
                     </div>
+
+
+                    <div id="course-upd-form" class="upd course-form form-border hidden">
+                        <form>
+                            <div class="form-tag">
+                                <strong><h2>Update Course</h2><br></strong>
+                                <p>Please fill the blanks below</p>
+                            </div>
+                            <div class="input-holder">
+                                <div class="input">
+                                    <label for="courseIdInputUpd"></label>
+                                    <input type="text" id="courseIdInputUpd" placeholder="Enter course ID">
+                                </div>
+                                
+                                <div class="input">
+                                    <label for="courseNewNameInput"></label>
+                                    <input type="text" id="courseNewNameInput" placeholder="Enter new course name">
+                                </div>
+                               
+                                <div class="input">
+                                    <label for="courseNewLecturerInput"></label>
+                                    <input type="text" id="courseNewLecturerInput" placeholder="Enter new course lecturer">
+                                </div>
+                                
+                                <div class="input">
+                                    <label for="courseNewMidtermInput"></label>
+                                    <input type="text" id="courseNewMidtermInput" placeholder="Enter new course midterm percent">
+                                </div>
+                                
+                                <div class="input">
+                                    <label for="courseNewActsInput"></label>
+                                    <input type="text" id="courseNewActsInput" placeholder="Enter new course ACTS">
+                                </div>
+                            </div>
+                            <div class="button-holder">
+                                <input type="submit" value="Update Course">
+                            </div>
+                        </form>
+                    </div>
+
+
+                    <div id="course-delete-form" class="delete course-form form-border hidden">
+                        <form>
+                            <div class="form-tag">
+                                <strong><h2>Delete Course</h2></strong>
+                                <div class="input-holder">
+                                    <div class="input">
+                                        <label for="deleteCourseInput"></label>
+                                        <input type="text" id="deleteCourseInput" placeholder="Enter course Id">
+                                    </div>
+                                    <div class="button-holder">
+                                        <input type="submit" value="Delete Course">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
                 </div>
                     <div class="table-div">
                         <table class="table" id="coursesTable"></table>
@@ -118,11 +158,10 @@
                     <div class="buttons">
                         <div class="btn-holder">
                             <button class="btn add-btn" id="std-add">Add New Student</button>
-                            <button class="btn update-btn" id="std-upd">Update Student</button>
                             <button class="btn delete-btn" id="std-dlt">Delete Student</button>
                         </div>
                         
-                        <div id="std-add-form" class="form-border hidden">
+                        <div id="std-add-form" class="add std-form form-border hidden">
                             <form>
                                 <div class="form-tag">
                                     <strong><h2>New Student Addition</h2><br></strong>
@@ -142,35 +181,40 @@
                                         <input type="text" id="studentIdInput" placeholder="Enter student ID">
                                     </div>
                                 </div>
-                                <div class="select-holder">
-                                    <p>Please select your faculty </p>
-                                    <label>
-                                        <select id = "faculty" name = "university">
-                                            <option value = "" disabled selected><p>Select faculty</p></option>
-                                            <option value="1"><p>Faculty of Engineering</p></option>
-                                            <option value="2"><p>Faculty of Technology</p></option>
-                                            <option value="3"><p>Faculty of Health Sciences</p></option>
-                                            <option value="4"><p>Rectorate</p></option>
-                                            <!-- values of options are facultyID's at faculties.json file -->
-                                        </select>
-                                    </label>  
-                                </div>
                                 <div class="button-holder">
                                     <input type="submit" value="Add Student">
                                 </div>
                             </form>
                         </div>
                     </div>
+                    <div id="std-delete-form" class="delete std-form form-border hidden">
+                        <form>
+                            <div class="form-tag">
+                                <strong><h2>Delete Student</h2></strong>
+                                <div class="input-holder">
+                                    <div class="input">
+                                        <label for="deleteStudentInput"></label>
+                                        <input type="text" id="deleteStudentInput" placeholder="Enter student Id">
+                                    </div>
+                                    <div class="button-holder">
+                                        <input type="submit" value="Delete Student">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="std-search-bar">
+                        <label for="studentSearch"></label>
+                        <input type="search" id="studentSearch" placeholder="search students (id or student name)">
+                        <div class="button-holder">
+                            <input type="submit" value="Search" id="stdSearchButton">
+                        </div>
+                        <div class="std-back-btn button-holder hidden">
+                            <input type="submit" value="Back" id="stdBackButton">
+                        </div>
+                    </div>
                     <div class="table-div">
                         <table class="table" id="students-table"></table>
-                    </div>
-                </div>
-                <div class="faculties hidden page">
-                    <h1>Faculties</h1>
-                    <p id="facultyCount"></p>
-
-                    <div class="table-div">
-                        <table class="table" id="faculties-table"></table>
                     </div>
                 </div>
                 <div class="contact-us hidden page">

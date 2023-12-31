@@ -1,5 +1,6 @@
 import {getCourseData , getCourseDataLength, setLocalStorage} from "../js/storagelocal.js";
 import { Course } from "./courses.js";
+import { getStudentsOfCourse } from "./studentInfoData.js";
 
 var coursesList = [];
 
@@ -8,15 +9,12 @@ async function setCourseList() {
 
         await setLocalStorage();
   
-        const courseData = getCourseData(); //we need data first.
-        console.log(courseData);    
+        const courseData = getCourseData(); //we need data first.   
         for (let i = 0; i < getCourseDataLength(); i++) {
         const arrayCourse = new Course(
             courseData[i].courseName,
             courseData[i].courseID,
             courseData[i].lecturer,
-            courseData[i].courseFaculty,
-            courseData[i].courseDepartment,
             courseData[i].midtermPercent,
             courseData[i].acts
         );
@@ -28,8 +26,6 @@ async function setCourseList() {
 }
 
 setCourseList();
-  
-  // getCourseList fonksiyonunu direkt setCourseList'i çağıracak şekilde değiştir
   export function getCourseList() {
     try {
       return coursesList;
@@ -46,7 +42,6 @@ export function findCourseById(courseID){
             if (courseID === courses[val].courseID){
                 return courses[val];
             } else{
-                console.log("bulunamadi");
                 return "Course has not been found .";
             }
         }
@@ -56,20 +51,13 @@ export function findCourseById(courseID){
 }
 
 //This method returns index of that course with same ID.
-function findByCourseName(courseName){
-    try{
-        const courses = coursesList;
-        for(let val = 0 ; val < courses.length ; val++){
-            if (courseName === courses[val].courseName){
-                return courses[val];
-            } else{
-                console.log("bulunamadi");
-                return "Course has not been found .";
-            }
+export function findCourseIndex(courseID){
+    for(let val = 0 ; val < coursesList.length ; val++){
+        if(coursesList[val].courseID === courseID){
+            return val;
         }
-    }  catch (err) {
-        console.log("findCoursetByName error , error : \n" +err);
     }
+    return -1;
 }
 
 
@@ -77,29 +65,28 @@ function findByCourseName(courseName){
 //This function implements a new course by JSON format , then checks this course with same id exist or not .
 //If it does not exists , this method pushes new course to the Courses Array from localStorage .
 //If lecture is already exists , method returns a warning message.
-function addNewCourse(courseName , courseID , courseFaculty , courseDepartment , midtermPercent , lecturer , acts){
-    try {
-        const newCourse = 
-        {
-            "courseName" : courseName,
-            "courseID" : courseID ,
-            "courseFaculty" : courseFaculty,
-            "courseDepartment" : courseDepartment,
-            "midtermPercent" : midtermPercent,
-            "lecturer" : lecturer ,
-            "acts" : acts
-        }
-        if(!doesCourseExist){
-            coursesList.push(newCourse)
-            localStorage.setItem("courses" , JSON.stringify(coursesList));
-            return "New course added.";
-        } else {
-            console.log("course exist");
-            return "Course already exists!";
-        }
-    } catch (err) {
-         console.log("Add new course error , error : \n" + err);
-        
+
+export function addNewCourse(courseName , courseID  , lecturer , midtermPercent , acts){
+    try{
+            const newCourse = 
+            {
+                "courseName" : courseName,
+                "courseID" : courseID,
+                "lecturer" : midtermPercent,
+                "midtermPercent" : lecturer,
+                "acts" : acts
+            }
+            console.log("calistim111");
+            if(!doesCourseExist(courseID)){
+                coursesList.push(newCourse);
+                console.log(coursesList);
+                localStorage.setItem("courses" , JSON.stringify(coursesList));
+                return "New course added.";
+            }else {
+                return "Course already exists!";
+            }
+    }catch(err){
+        console.log("Course Add error , error : \n" , err);
     }
 }
 
@@ -114,24 +101,42 @@ function doesCourseExist(courseID){         //This function checking Course with
     return exist;
 }
 
-//This function gets course index , and makes changes . But you can't change Faculty and Department of a lecture. 
-function updateCourse(courseID , updatedCourseName , midtermPercent , lecturer){    
+//This function gets course index , and makes changes .
+export function updateCourse(courseID , updatedCourseName , midtermPercent , lecturer , acts){    
     try{
+        console.log("claistim1");
         const index = findCourseIndex(courseID);
-        if(index !== -1){
-            courseData[index] = 
-            {
-                "courseName" : updatedCourseName,
-                "courseID" : courseID ,
-                "courseFaculty" : courseData[index].courseFaculty,
-                "courseDepartment" : courseData[index].courseDepartment,
-                "midtermPercent" : midtermPercent,
-                "lecturer" : lecturer 
-            };
-            console.log(courseData);
+        console.log(index);
+        if(index === -1){
+            return "Course has not found.";
         }
+        console.log("calistim2");
+        coursesList.splice(index , 1);
+        const updatedCourse = {
+            "courseName" : updatedCourseName,
+            "courseID" : courseID,
+            "lecturer" : midtermPercent,
+            "midtermPercent" : lecturer,
+            "acts" : acts
+        }
+        coursesList.splice(index , 0 , updatedCourse);
+        localStorage.setItem("courses" , JSON.stringify(coursesList));
     } catch (err) {
         console.log("Update course error , error :\n " +err);
+    }
+}
+
+export function deleteCourse(courseID){
+    try{
+        const index = findCourseIndex(courseID);
+        
+        if(index === -1){
+            return "Course has not found , please try again.";
+        }
+        coursesList.splice(index , 1);
+        localStorage.setItem("courses" , JSON.stringify(coursesList));
+    }catch(err){
+        console.log("deleteCourse error , error :\n" , err);
     }
 }
 
@@ -155,7 +160,6 @@ export function createCourseTable(domElement){
     headerRow.insertCell().textContent = "Course ID";
     headerRow.insertCell().textContent = "Course Name";
     headerRow.insertCell().textContent = "Lecturer";
-    headerRow.insertCell().textContent = "Course Department";
     headerRow.insertCell().textContent = "ACTS";
     headerRow.style.backgroundColor = "#303030";
     headerRow.style.color = "whitesmoke";
@@ -166,7 +170,6 @@ export function createCourseTable(domElement){
         row.insertCell().textContent = courses[i].courseID;
         row.insertCell().textContent = courses[i].courseName;
         row.insertCell().textContent = courses[i].lecturer;
-        row.insertCell().textContent = courses[i].courseDepartment;
         row.insertCell().textContent = courses[i].acts;
         
         //Background color depends on index
@@ -181,14 +184,11 @@ export function createCourseTable(domElement){
       return courseTable.innerHTML;
 }
 
-export function insertToCoursesTable(domElement , courseName , courseID , courseFaculty , courseDepartment , midtermPercent , lecturer , acts){
+export function insertToCoursesTable(domElement , courseName , courseID , midtermPercent , lecturer , acts){
     const courseTable = domElement;
     const row = courseTable.insertRow();
-    addNewCourse(courseName , courseID , courseFaculty , courseDepartment , midtermPercent , lecturer , acts);
     row.insertCell().textContent = courseName;
     row.insertCell().textContent = courseID;
-    row.insertCell().textContent = courseFaculty;
-    row.insertCell().textContent = courseDepartment;
     row.insertCell().textContent = midtermPercent;
     row.insertCell().textContent = lecturer;
     row.insertCell().textContent = acts;
@@ -202,4 +202,37 @@ export function insertToCoursesTable(domElement , courseName , courseID , course
         row.style.color = "#B9B4C7";
       }
 
+}
+
+export function showStudentsOfCourses(domElement){
+    const courseTable = domElement;
+    for(let val = 0 ; val<coursesList.length ; val++){
+        const headerRow = courseTable.insertRow();
+        headerRow.insertCell().textContent = "Course ID";
+        headerRow.insertCell().textContent = "Course Name";
+        headerRow.insertCell().textContent = "Student ID";
+        headerRow.insertCell().textContent = "Student Name";
+        headerRow.style.backgroundColor = "#303030";
+        headerRow.style.color = "whitesmoke";
+        
+        const courseStudents = getStudentsOfCourse(coursesList[val].courseID);
+        for(let i = 0 ; i < courseStudents.length ; i++){
+            const row = courseTable.insertRow();
+            row.insertCell().textContent = coursesList[val].courseID;
+            row.insertCell().textContent = coursesList[val].courseName;
+            row.insertCell().textContent = courseStudents[i].studentId;
+            row.insertCell().textContent =  courseStudents[i].name;
+            
+            const background = courseStudents.length -1;
+            if (background % 2 === 1) {
+                row.style.backgroundColor = "#B9B4C7";
+                row.style.color = "49415c";
+              } else {
+                row.style.backgroundColor = "#49415c";
+                row.style.color = "#B9B4C7";
+              }
+        }
+    
+    }
+    
 }

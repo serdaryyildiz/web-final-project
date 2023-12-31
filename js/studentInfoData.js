@@ -1,50 +1,57 @@
-import { findCourseById } from "../js/coursedata.js";
-import { getStudentsInfoData , getStudentsInfoDataLength} from "../js/storagelocal.js";
-import { findStudentById } from "../js/studentsdata.js";
+import { findCourseById, getCourseList } from "../js/coursedata.js";
+import { getStudentsInfoData , getStudentsInfoDataLength, setLocalStorage} from "../js/storagelocal.js";
+import { findStudentById, findStudentsIndex } from "../js/studentsdata.js";
 
 
 var studentInfo = [];
+const courses = getCourseList();
 
-function setStudentInfoList(){
+//We are setting studentInfo array from localStorage
+async function setStudentInfoList(){
+    await setLocalStorage();
     var info = getStudentsInfoData();
     for(let i = 0 ; i < getStudentsInfoDataLength() ; i++){
         var arrayInfo = 
         {
             "studentId" : info[i].studentID,
-            "studentDepartment" : info[i].studentDepartment,
             "studentCourseInfos" : info[i].studentCourseInfos
         }
         studentInfo.push(arrayInfo)
     }
-    return studentInfo;
 }
 
-export function getStudentInfoList(){
+setStudentInfoList();
+
+export async function getStudentInfoList(){
     try {
+        await setStudentInfoList();
         return studentInfo;
     } catch (err){
         console.log("stundent info list is empty , error : \n" , err);
     }
 }
 
+
+//This method returns students index at array
 function findStudentIndex(studentId) {
     try {
-        const studentInfo = getStudentInfoList();
         for (let val = 0; val < studentInfo.length; val++) {
             if (studentInfo[val].studentId === studentId) {
                 return val;
             }
         }
-        console.log("Student has not been found");
+       // console.log("Student has not been found");
         return -1; // If method can't find the student , it will return -1.
     } catch (err) {
         console.log("findStudentIndex error , err : \n" + err);
     }
 }
 
+
+//This method returns selected courses infos 
 function findCourseInfosIndex(courseId , studentId){
     try {
-        const studentInfo = getStudentInfoList();
+        const studentInfo = studentInfo;
         const studentIndex = findStudentIndex(studentId);
         for(let val = 0 ; val < studentInfo[studentIndex].studentCourseInfos.lengt ; val++){
             if(studentInfo[studentIndex].studentCourseInfos[val].courseID === courseId){
@@ -61,16 +68,13 @@ function findCourseInfosIndex(courseId , studentId){
 
 function findStudentInStudentInfos(studentId) {
     try {
-        var studentInfo = getStudentInfoList();
+        var studentInfo = studentInfo;
         for (let val = 0; val < studentInfo.length; val++) {
             if (studentInfo[val].studentId === studentId) {
                 console.log("Student found:", studentInfo[val]);
-                console.log("Student 3 : " , studentInfo[3]);
                 return studentInfo[val];
             }
         }
-        console.log("asdasdasdasdasd\n" ,studentInfo);
-        console.log("length : " +studentInfo.length);
         console.log("Student not found.");
     } catch (err) {
         console.log("findStudentInStudentInfos error , error : \n", err);
@@ -117,15 +121,15 @@ export function findCourseInfosOfSelectedStudent(courseId , studentId){
 
 export function getCoursesOfStudent(studentId){
     try{
-        let studentInfo = getStudentInfoList();
+        let studentsInfo = studentInfo;
         let courses = [];
         var student = findStudentIndex(studentId);
         if(courses.length !== 0){
-            for(let val = 0 ; val < studentInfo[student].studentCourseInfos.length ; val++){
+            for(let val = 0 ; val < studentsInfo[student].studentCourseInfos.length ; val++){
                 const courseAndGrades = {
-                    "course" : findCourseById(studentInfo[student].studentCourseInfos[val].courseID),
-                    "midtermGrade" : studentInfo[student].studentCourseInfos[val].midtermGrade,
-                    "finalGrade" : studentInfo[student].studentCourseInfos[val].finalGrade
+                    "course" : findCourseById(studentsInfo[student].studentCourseInfos[val].courseID),
+                    "midtermGrade" : studentsInfo[student].studentCourseInfos[val].midtermGrade,
+                    "finalGrade" : studentsInfo[student].studentCourseInfos[val].finalGrade
                 }
                 courses.push(courseAndGrades);
             }
@@ -141,13 +145,12 @@ export function getCoursesOfStudent(studentId){
 
 //Iterating in studentInfo.json file and finding students of selected course.
 export function getStudentsOfCourse(courseId){
-    let studentInfo = getStudentInfoList();
     let students = [];
-    console.log(getStudentsInfoDataLength());
-    for(let val = 0 ; val < getStudentsInfoDataLength() ; val++){
+    for(let val = 0 ; val < studentInfo.length ; val++){
         for(let i = 0 ; i < studentInfo[val].studentCourseInfos.length ; i++){
             if(studentInfo[val].studentCourseInfos[i].courseID === courseId){
-                students.push(findStudentById(studentInfo[val].studentID));
+                console.log("sirayla " ,findStudentById(studentInfo[val].studentId));
+                students.push(findStudentById(studentInfo[val].studentId));
                 break; //Breaking for loop because student can't take same course twice. If we found it , we don't need to loop anymore.
             }
         }
@@ -160,7 +163,7 @@ export function getStudentsOfCourse(courseId){
 
 export function updateStudentsGrades(courseId , studentId , updatedMidterm , updatedFinal){
     try {
-        const studentInfoList = getStudentInfoList();
+        const studentInfoList = studentInfo;
         const studentIndex = findStudentIndex(studentId);
         const courseIndex = findCourseInfosIndex(courseId);
         if(studentIndex !== -1){
@@ -183,9 +186,37 @@ export function updateStudentsGrades(courseId , studentId , updatedMidterm , upd
         console.log("updateStudentsGrades error , error : \n"+err);
     }
 }
+//Code didn't worked 
+// export async function createStudentsInfoTable(domElement){
+//     const studentsInfo = studentInfo;
+//     const studentList = students;
+//     const courseList = courses;
+//     const table = domElement;
+//     table.innerHTML = "";
 
-export function createStudentsInfoTable(studentId){
-    const studentInfo = getStudentInfoList();
-    //Clear any existing table content
+//     const headerRow = table.insertRow();
+//     headerRow.insertCell().textContent = "Student ID";
+//     headerRow.insertCell().textContent = "Student Name";
+//     headerRow.insertCell().textContent = "Course Name";
+//     headerRow.insertCell().textContent = "Midterm Grade" ;
+//     headerRow.insertCell().textContent = "Final Grade";
+//     headerRow.insertCell().textContent = "Average"
 
-}
+//     for(let val = 0 ; val < studentInfo.length ; val++){
+//         const student = findStudentsIndex()
+//         const row = table.insertRow();
+//     }
+
+//     // for(let val = 0 ; val < studentsInfo[index].studentCourseInfos.length ; val++){
+//     //     const thisCourse = findCourseById(studentsInfo[index].studentCourseInfos[val]);
+//     //    
+//     //     row.insertCell().textContent = thisCourse.courseName;
+//     //     row.insertCell().textContent = studentsInfo[index].studentCourseInfos[val].courseID;
+//     //     row.insertCell().textContent = studentsInfo[index].studentCourseInfos[val].midtermGrade;
+//     //     row.insertCell().textContent = studentsInfo[index].studentCourseInfos[val].finalGrade;
+//     //     row.insertCell().textContent = thisCourse.acts;
+//     // }
+
+//     return table;
+// }
+

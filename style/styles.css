@@ -58,7 +58,6 @@ ul {
   }
 
 nav {
-    position: fixed;
     background-color: #352F44;
     box-shadow: 4px 1px 4px rgba(0 , 0 ,0 ,0.3);
     height: 10vh;
@@ -91,7 +90,6 @@ nav {
 }
 
 .middle-page{
-    margin-top: 9.9vh;
     display: flex;
 }
 
@@ -131,6 +129,7 @@ nav {
 
 /* Contact Us Page Design */
 .contact-us{
+    align-items: center;
     padding: 3rem;
 }
 
@@ -177,16 +176,49 @@ nav {
 .table-div {
     display: flex;
     justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.table-div a{
+    padding: 0;
 }
 
 .table{
     border: 3px solid #352F44;
     font-style: italic;
     font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.search-bar{
+    display: flex;
+    width: 70vw;
+    justify-content: space-between;
+    padding: 0.5rem;
+    height: 7vh;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+    align-items: center;
+    border: 1px solid #352F44;
+    border-radius: 1rem;
+    background-color: #352F44;
+    padding-right: 1.5rem;
+}
+
+
+.search-bar input[type=submit]{
+    height: 6vh;
+}
+
+#studentSearch{
+    width: 55vw;
+    height: 5vh;
+    padding: 0.5rem;
+    background-color: #B9B4C7;
 }
 
 #students-table {
-    width: 50%;
+    width: 70vw;
 }
 
 #students-table tr{
@@ -194,7 +226,7 @@ nav {
 }
 
 #coursesTable{
-    width: 65%;
+    width: 80vw;
 }
 
 #coursesTable tr{
@@ -202,7 +234,7 @@ nav {
 }
 
 #faculties-table{
-    width: 85%;
+    width: 85vw;
 }
 
 #faculties-table tr{
@@ -443,5 +475,92 @@ input[type=submit]:hover {
     margin: 1rem 0;
 }
 
-/* Update Student Form */
+/* Responsive Styles */
+@media only screen and (max-width: 1280px) {
+    /* Adjustments for screens up to 1280px width */
+    .nav-left h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    /* Adjustments for screens up to 1024px width */
+    .copy-right-bar{
+        display: none;
+    }
+    
+    .middle-page{
+        flex-direction: column;
+    }
+
+    .left-bar{
+        align-items: center;
+        width: 100vw;
+        height: 10vh;
+        flex-direction: row;
+    }
+
+    .left-bar ul li{
+        display: inline;
+        align-items: center;
+        margin-top: 0;
+        
+    }
+
+    .left-bar ul{
+        margin-top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .content-holder{
+        overflow:initial;
+    }
+
+    .copy-right-bar{
+        bottom: 0;
+    }
+
+    .nav-left h1 {
+        font-size: 2rem;
+        margin-left: 2rem;
+    }
+    .nav-right {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media only screen and (max-width: 786px) {
+    /* Adjustments for screens up to 786px width */
+    .nav-left h1 {
+        margin-left: 3rem;
+    }
+    .nav-right {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media only screen and (max-width: 520px) {
+    /* Adjustments for screens up to 520px width */
+    .nav-right {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn{
+        width: 45vw;
+        height: 5vh;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    /* Adjustments for screens up to 360px width */
+    .nav-right {
+        flex-direction: column;
+        align-items: center;
+    }
+}
 

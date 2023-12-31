@@ -143,5 +143,310 @@
         "studentName" : "Cemal" ,
         "studentSurname" : "FİTOZ" ,
         "studentID" : "190709013"
+    },
+    {
+        "studentName": "Aslı",
+        "studentSurname": "YILDIRIM",
+        "studentID": "200709090"
+    },
+    {
+        "studentName": "Berkay",
+        "studentSurname": "GÜNER",
+        "studentID": "200709091"
+    },
+    {
+        "studentName": "Cansu",
+        "studentSurname": "KAYA",
+        "studentID": "200709092"
+    },
+    {
+        "studentName": "Deniz",
+        "studentSurname": "SARI",
+        "studentID": "200709093"
+    },
+    {
+        "studentName": "Emre",
+        "studentSurname": "BAŞARAN",
+        "studentID": "200709094"
+    },
+    {
+        "studentName": "Feyza",
+        "studentSurname": "DEMİR",
+        "studentID": "200709095"
+    },
+    {
+        "studentName": "Gizem",
+        "studentSurname": "AKGÜN",
+        "studentID": "200709096"
+    },
+    {
+        "studentName": "Hakan",
+        "studentSurname": "KARA",
+        "studentID": "200709097"
+    },
+    {
+        "studentName": "Irmak",
+        "studentSurname": "KILIÇ",
+        "studentID": "200709098"
+    },
+    {
+        "studentName": "Jale",
+        "studentSurname": "TEKİN",
+        "studentID": "200709099"
+    },
+    {
+        "studentName": "Kaan",
+        "studentSurname": "AKIN",
+        "studentID": "200709100"
+    },
+    {
+        "studentName": "Leyla",
+        "studentSurname": "DURMUŞ",
+        "studentID": "200709101"
+    },
+    {
+        "studentName": "Mehmet",
+        "studentSurname": "ERDOĞAN",
+        "studentID": "200709102"
+    },
+    {
+        "studentName": "Nihan",
+        "studentSurname": "ÖZER",
+        "studentID": "200709103"
+    },
+    {
+        "studentName": "Oğuz",
+        "studentSurname": "GÜL",
+        "studentID": "200709104"
+    },
+    {
+        "studentName": "Pelin",
+        "studentSurname": "KILIÇ",
+        "studentID": "200709105"
+    },
+    {
+        "studentName": "Rüzgar",
+        "studentSurname": "YILMAZ",
+        "studentID": "200709106"
+    },
+    {
+        "studentName": "Selin",
+        "studentSurname": "ÇETİN",
+        "studentID": "200709107"
+    },
+    {
+        "studentName": "Tolga",
+        "studentSurname": "SÖZEN",
+        "studentID": "200709108"
+    },
+    {
+        "studentName": "Umut",
+        "studentSurname": "KILIÇ",
+        "studentID": "200709109"
+    },
+    {
+        "studentName": "Vildan",
+        "studentSurname": "YAVUZ",
+        "studentID": "200709110"
+    },
+    {
+        "studentName": "Yusuf",
+        "studentSurname": "ÖZDEMİR",
+        "studentID": "200709111"
+    },
+    {
+        "studentName": "Zeynep",
+        "studentSurname": "TÜRK",
+        "studentID": "200709112"
+    },
+    {
+        "studentName": "Ahmet",
+        "studentSurname": "SÖNMEZ",
+        "studentID": "200709113"
+    },
+    {
+        "studentName": "Ayşe",
+        "studentSurname": "YILMAZ",
+        "studentID": "200709114"
+    },
+    {
+        "studentName": "Bora",
+        "studentSurname": "DEMİR",
+        "studentID": "200709115"
+    },
+    {
+        "studentName": "Cem",
+        "studentSurname": "KARA",
+        "studentID": "200709116"
+    },
+    {
+        "studentName": "Dilara",
+        "studentSurname": "GÜNEŞ",
+        "studentID": "200709117"
+    },
+    {
+        "studentName": "Emir",
+        "studentSurname": "YILMAZ",
+    "studentID": "200709118"
+    },
+    {
+        "studentName": "Fırat",
+        "studentSurname": "ÖZTÜRK",
+        "studentID": "200709119"
+    },
+    {
+        "studentName": "Gül",
+        "studentSurname": "KOÇ",
+        "studentID": "200709120"
+    },
+    {
+        "studentName": "Hüseyin",
+        "studentSurname": "YILDIZ",
+        "studentID": "200709121"
+    },
+    {
+        "studentName": "İrem",
+        "studentSurname": "GÜR",
+        "studentID": "200709122"
+    },
+    {
+        "studentName": "Jülide",
+        "studentSurname": "KARACA",
+        "studentID": "200709123"
+    },
+    {
+        "studentName": "Kerem",
+        "studentSurname": "ALP",
+        "studentID": "200709124"
+    },
+    {
+        "studentName": "Lara",
+        "studentSurname": "SÜMER",
+        "studentID": "200709125"
+    },
+    {
+        "studentName": "Mert",
+        "studentSurname": "ERGİN",
+        "studentID": "200709126"
+    },
+    {
+        "studentName": "Nalan",
+        "studentSurname": "KURT",
+        "studentID": "200709127"
+    },
+    {
+        "studentName": "Onur",
+        "studentSurname": "CEYLAN",
+        "studentID": "200709128"
+    },
+    {
+        "studentName": "Pınar",
+        "studentSurname": "BALCI",
+        "studentID": "200709129"
+    },
+    {
+        "studentName": "Rüzgar",
+        "studentSurname": "ARSLAN",
+        "studentID": "200709130"
+    },
+    {
+        "studentName": "Şeyma",
+        "studentSurname": "KAYA",
+        "studentID": "200709131"
+    },
+    {
+        "studentName": "Tolga",
+        "studentSurname": "GÜL",
+        "studentID": "200709132"
+    },
+    {
+        "studentName": "Ümit",
+        "studentSurname": "ÖZDEMİR",
+        "studentID": "200709133"
+    },
+    {
+        "studentName": "Vildan",
+        "studentSurname": "GÜNEŞ",
+        "studentID": "200709134"
+    },
+    {
+        "studentName": "Yasin",
+        "studentSurname": "ÇELİK",
+        "studentID": "200709135"
+    },
+    {
+        "studentName": "Zara",
+        "studentSurname": "YILDIZ",
+        "studentID": "200709136"
+    },
+    {
+        "studentName": "Arda",
+        "studentSurname": "KURT",
+        "studentID": "200709137"
+    },
+    {
+        "studentName": "Begüm",
+        "studentSurname": "GÜLER",
+        "studentID": "200709138"
+    },
+    {
+        "studentName": "Can",
+        "studentSurname": "ÖZKAN",
+        "studentID": "200709139"
+    },
+    {
+        "studentName": "Dilan",
+        "studentSurname": "YILMAZ",
+        "studentID": "200709140"
+    },
+    {
+        "studentName": "Ege",
+        "studentSurname": "AYDIN",
+        "studentID": "200709141"
+    },
+    {
+        "studentName": "Feride",
+        "studentSurname": "KILIÇ",
+        "studentID": "200709142"
+    },
+    {
+        "studentName": "Gürkan",
+        "studentSurname": "YALÇIN",
+        "studentID": "200709143"
+    },
+    {
+        "studentName": "Hande",
+        "studentSurname": "AKSU",
+        "studentID": "200709144"
+    },
+    {
+        "studentName": "İsmail",
+        "studentSurname": "YILDIRIM",
+        "studentID": "200709145"
+    },
+    {
+        "studentName": "Janset",
+        "studentSurname": "KARA",
+        "studentID": "200709146"
+    },
+    {
+        "studentName": "Kaan",
+        "studentSurname": "ERDEM",
+        "studentID": "200709147"
+    },
+    {
+        "studentName": "Leman",
+        "studentSurname": "KAYA",
+        "studentID": "200709148"
+    },
+    {
+        "studentName": "Murat",
+        "studentSurname": "ÇİÇEK",
+        "studentID": "200709149"
+    },
+    {
+        "studentName": "Naz",
+        "studentSurname": "YILMAZ",
+        "studentID": "200709150"
     }
 ]

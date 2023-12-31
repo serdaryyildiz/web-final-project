@@ -2,8 +2,6 @@
     {
         "courseName" : "Web Development and Programming",
         "courseID" : "CENG3507" ,
-        "courseFaculty" : "1",
-        "courseDepartment" : "CENG",
         "midtermPercent" : "20%",
         "lecturer" : "Bekir Taner DİNÇER" ,
         "acts" : "6"
@@ -11,8 +9,6 @@
     {
         "courseName" : "Database Management Systems",
         "courseID" : "CENG3005" ,
-        "courseFaculty" : "1",
-        "courseDepartment" : "CENG",
         "midtermPercent" : "40%",
         "lecturer" : "Tuğba SÜZEK"  ,
         "acts" : "6"
@@ -20,8 +16,6 @@
     {
         "courseName" : "Mobile Application Development",
         "courseID" : "CENG3545" ,
-        "courseFaculty" : "1",
-        "courseDepartment" : "CENG",
         "midtermPercent" : "30%",
         "lecturer" : "Özgür KILIÇ" ,
         "acts" : "6"
@@ -29,8 +23,6 @@
     {
         "courseName" : "TURKISH I",
         "courseID" : "TDB3801" ,
-        "courseFaculty" : "4",
-        "courseDepartment" : "4",
         "midtermPercent" : "40%",
         "lecturer" : "Fatma AYAN" ,
         "acts" : "2"
@@ -38,10 +30,15 @@
     {
         "courseName" : "PRINCIPLES OF KEMAL ATATURK I",
         "courseID" : "ATB3801" ,
-        "courseFaculty" : "4",
-        "courseDepartment" : "4",
         "midtermPercent" : "40%",
         "lecturer" : "Tuğba ÇALIŞKAN" ,
         "acts" : "4"
+    },
+    {
+        "courseName" : "Computer Networks",
+        "courseID" : "CENG3007",
+        "midtermPercent" : "40%",
+        "lecturer" : "Enis KARAARSLAN",
+        "acts" : "6"
     }
 ]
