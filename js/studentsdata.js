@@ -5,8 +5,9 @@ var studentList = [];
 
 async function setStudentList(){
     try{
+        
     await setLocalStorage();
-    const students = [];
+
     let student = getStudentsData();
     console.log(getStudentDataLength());
     for(let i = 0 ; i < student.length ; i++){
@@ -15,11 +16,9 @@ async function setStudentList(){
             student[i].studentSurname ,
             student[i].studentID
         )
-        students.push(arrayStudent);
         studentList.push(arrayStudent);
     }
     console.log("studentlist : \n" ,studentList);
-    return students;
     }catch(err){
         console.log("setStudentList error , error : \n" , err);
     } 

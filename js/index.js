@@ -1,12 +1,13 @@
 import storagelocal from "../js/storagelocal.js";
 import { createStudentTable ,insertToStudentTable , addStudent} from "../js/studentsdata.js";
-import { createCourseTable } from "../js/coursedata.js";
+import { createCourseTable, insertToCoursesTable } from "../js/coursedata.js";
 import { createFacultiesTable } from "../js/facultiesdata.js";
 //DOM Elements
-const homeBtn = document.querySelector(".home-btn");
+const leftBar = document.querySelector(".left-bar");
 const coursesBtn = document.querySelector(".courses-btn");
 const studentsBtn = document.querySelector(".students-btn");
 const facultiesBtn = document.querySelector(".faculties-btn");
+const contactBtn = document.querySelector(".contact-us-btn");
 const courseCount = document.getElementById("courseCount");
 const studentCount = document.getElementById("studentCount");
 const stdAddButton = document.getElementById("std-add");
@@ -25,10 +26,10 @@ studentCount.textContent = "We have "+ studentCounter +" students";
 courseCount.textContent = "We have "+ courseCounter +" courses";
 
 //Home Page Actions
-homeBtn.addEventListener("click" , function() {
-    pageChange("home");
+// homeBtn.addEventListener("click" , function() {
+//     pageChange("home");
     
-});
+// });
 
 // Javascript Section for Course actions
 coursesBtn.addEventListener("click" , function() {
@@ -38,6 +39,16 @@ coursesBtn.addEventListener("click" , function() {
 
 courseAddBtn.addEventListener("click" , function() {
     courseAddForm.classList.toggle("hidden");
+    studentAddForm.addEventListener("submit" , function(){
+        const courseIdInput = document.getElementById("courseIdInput");
+        const courseNameInput = document.getElementById("courseNameInput");
+        const courseLecturerInput = document.getElementById("courseLecturerInput");
+        const courseMidtermInput = document.getElementById("courseMidtermInput");
+        const courseActsInput = document.getElementById("courseActsInput");
+        const courseFacultyInput = document.getElementById("courseFacultyInput");
+        const courseDepartmentInput = document.getElementById("courseDepartmentInput");
+        insertToCoursesTable(studentTable , courseNameInput , courseIdInput , courseFacultyInput , courseDepartmentInput , courseMidtermInput , courseLecturerInput ,courseActsInput);
+    });
 })
 // Javascript Section for student actions
 
@@ -48,7 +59,7 @@ studentsBtn.addEventListener("click" , function() {
 
 stdAddButton.addEventListener("click" , function() {
     studentAddForm.classList.toggle("hidden");
-    studentAddForm.addEventListener("submit" , function(event) {
+    studentAddForm.addEventListener("submit" , function() {
         //event.preventDefault(); //It stops page re-loading.
         //Get input from form :
         const studentNameInput = document.getElementById("studentNameInput").value;
@@ -64,6 +75,11 @@ stdAddButton.addEventListener("click" , function() {
 facultiesBtn.addEventListener("click" , function() {
     pageChange("faculties");
     createFacultiesTable(facultiesTable);
+});
+
+
+contactBtn.addEventListener("click" , function() {
+    pageChange("contact-us");
 });
 
 //Changing page function 

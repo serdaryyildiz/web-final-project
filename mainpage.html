@@ -14,8 +14,8 @@
                 <h1>OBS</h1>
             </div>
             <div class="nav-right">
-                <a href="./mainpage.html" class="profile">Profile</a>
-                <a href="./mainpage.html">Menu</a>
+                <a href="./mainpage.html">Home</a>
+                
             </div>
         </nav>
         <div class="middle-page">
@@ -25,13 +25,13 @@
                 </div>
                 <div class="left-bar-holder">
                     <ul>
-                        <li><a href="#" class="home-btn">Home</a></li>
-                        
                         <li><a href="#" class="courses-btn">Courses</a></li>
 
                         <li><a href="#" class="students-btn">Students</a></li>
 
                         <li><a href="#" class="faculties-btn">Faculties</a></li>
+
+                        <li><a href="#" class="contact-us-btn">Contact Us</a></li>
                     </ul>
                 </div>
     
@@ -61,19 +61,32 @@
                             </div>
                             <div class="input-holder">
                                 <div class="input">
+                                    <label for="courseIdInput"></label>
                                     <input type="text" id="courseIdInput" placeholder="Enter course ID">
                                 </div>
+                                <label for="courseNameInput"></label>
                                 <div class="input">
                                     <input type="text" id="courseNameInput" placeholder="Enter course name">
                                 </div>
+                                <label for="courseLecturerInput"></label>
                                 <div class="input">
                                     <input type="text" id="courseLecturerInput" placeholder="Enter course lecturer">
                                 </div>
+                                <label for="courseMidtermInput"></label>
                                 <div class="input">
                                     <input type="text" id="courseMidtermInput" placeholder="Enter course midterm percent">
                                 </div>
+                                <label for="courseActsInput"></label>
                                 <div class="input">
                                     <input type="text" id="courseActsInput" placeholder="Enter course ACTS">
+                                </div>
+                                <label for="courseFacultyInput"></label>
+                                <div class="input">
+                                    <input type="text" id="courseFacultyInput" placeholder="Enter course faculty">
+                                </div>
+                                <label for="courseDepartmentInput"></label>
+                                <div class="input">
+                                    <input type="text" id="courseDepartmentInput" placeholder="Enter course department">
                                 </div>
                             </div>
                             <div class="select-holder">
@@ -89,7 +102,7 @@
                                 </label>  
                             </div>
                             <div class="button-holder">
-                                <input type="submit" value="Submit">
+                                <input type="submit" value="Add Course">
                             </div>
                         </form>
                     </div>
@@ -103,9 +116,12 @@
                     <h1>Students</h1>
                     <p id="studentCount"></p>
                     <div class="buttons">
-                        <button class="btn add-btn" id="std-add">Add New Student</button>
-                        <button class="btn update-btn" id="std-upd">Update Student</button>
-                        <button class="btn delete-btn" id="std-dlt">Delete Student</button>
+                        <div class="btn-holder">
+                            <button class="btn add-btn" id="std-add">Add New Student</button>
+                            <button class="btn update-btn" id="std-upd">Update Student</button>
+                            <button class="btn delete-btn" id="std-dlt">Delete Student</button>
+                        </div>
+                        
                         <div id="std-add-form" class="form-border hidden">
                             <form>
                                 <div class="form-tag">
@@ -157,31 +173,26 @@
                         <table class="table" id="faculties-table"></table>
                     </div>
                 </div>
-            </div>
-        </div>
-        
-        <!--Footer Side of the Page-->
-        <div class="footer">
-            <div class="footer-left">
-                <ul>
-                    <li><span class="list-header">Career</span></li>
-                    <a href=""><li>For Students</li></a>
-                    <a href=""><li>For Lecturers</li></a>
-                </ul>
-            </div>
-            <div class="footer-middle">
-                <ul>
-                    <li><span class="list-header">Contact Us</span></li>
-                    <a><li>obs@uni.mu.edu.tr</li></a>
-                    <a href=""><li>uni.com.tr</li></a>
-                </ul>
-            </div>
-            <div class="footer-right">
-                <ul>
-                    <li><span class="list-header">Others</span></li>
-                    <a href=""><li>dys.uni.tr</li></a>
-                    <a href=""><li>uni.edu.tr</li></a>
-                </ul>
+                <div class="contact-us hidden page">
+                    <h1>Contact Us</h1>
+                    <div class="contact-links">
+                        <ul>
+                            <li><h2>Career</h2></li>
+                            <li><a href="">For Students</a></li>
+                            <li><a href="">For Lecturers</a></li>
+                        </ul>
+                        <ul>
+                            <li><h2>Mail</h2></li>
+                            <li><a href="">obs@uni.mu.edu.tr</a></li>
+                            <li><a href="">university@edu.tr</a></li>
+                        </ul>
+                        <ul>
+                            <li><h2>Others</h2></li>
+                            <li><a href="">dys.uni.tr</a></li>
+                            <li><a href="">uni.edu.tr</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="copy-right-bar">
