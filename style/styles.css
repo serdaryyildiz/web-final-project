@@ -93,6 +93,12 @@ nav {
     display: flex;
 }
 
+#bytenbutton{
+    background-color: #352F44;
+    height: 5vh;
+    
+}
+
 .home h1{
     margin-top: 1rem;
 }
@@ -295,6 +301,28 @@ nav {
 
 .delete-btn:hover{
     background-color: #8E2929;
+}
+
+.course-info-btn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-course-student{
+    background-color: #505050;
+    width: 25vw;
+    margin-bottom: 1rem;
+}
+
+.upd-course-student{
+    background-color: #505050;
+    width: 25vw;
+    margin-bottom: 2rem;
+}
+
+#coursesInfoTable{
+    width: 75vw;
 }
 
 .courses{

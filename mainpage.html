@@ -13,7 +13,8 @@
             <div class="nav-left">
                 <h1>OBS</h1>
             </div>
-            <div class="nav-right">
+            <div class="nav-right"> 
+                <button class="btn" id="bytenbutton">By Ten : True</button>
                 <a href="./mainpage.html">Home</a>
                 
             </div>
@@ -146,11 +147,83 @@
                         </form>
                     </div>
 
+
+                    
+
                 </div>
                     <div class="table-div">
                         <table class="table" id="coursesTable"></table>
                     </div>
+
+                    <div class="course-info-btn">
+                        <button class="btn add-course-student" id="course-add-std">Add Student To Course</button>
+                        <button class="btn upd-course-student" id="course-upd-std">Update Students Grades</button>
+                    </div>
                     
+                    <div id="add-course-student-form" class="addstd-course course-form form-border hidden">
+                        <form>
+                            <div class="form-tag">
+                                <strong><h2>Add Student To Course</h2></strong>
+                                <div class="input-holder">
+                                    <div class="input">
+                                        <label for="studentIdInputCourse"></label>
+                                        <input type="text" id="studentIdInputCourse" placeholder="Enter student Id">
+                                    </div>
+                                    <div class="input">
+                                        <label for="courseIdInputStudent"></label>
+                                        <input type="text" id="courseIdInputStudent" placeholder="Enter course Id">
+                                    </div>
+                                    <div class="input">
+                                        <label for="studentMidtermInput"></label>
+                                        <input type="text" id="studentMidtermInput" placeholder="Enter students midterm grade">
+                                    </div>
+                                    <div class="input">
+                                        <label for="studentFinalInput"></label>
+                                        <input type="text" id="studentFinalInput" placeholder="Enter students final grade">
+                                    </div>
+                                    <div class="button-holder">
+                                        <input type="submit" value="Add Student">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div id="upd-course-student-form" class="updstd-course course-form form-border hidden">
+                        <form>
+                            <div class="form-tag">
+                                <strong><h2>Update Student Grades</h2></strong>
+                                <div class="input-holder">
+                                    <div class="input">
+                                        <label for="updateGradeIdInput"></label>
+                                        <input type="text" id="updateGradeIdInput" placeholder="Enter student Id">
+                                    </div>
+                                    <div class="input">
+                                        <label for="updateGradeCourseInput"></label>
+                                        <input type="text" id="updateGradeCourseInput" placeholder="Enter course Id">
+                                    </div>
+                                    <div class="input">
+                                        <label for="studentUpdateMidtermInput"></label>
+                                        <input type="text" id="studentUpdateMidtermInput" placeholder="Enter students updated midterm grade">
+                                    </div>
+                                    <div class="input">
+                                        <label for="studentUpdateFinalInput"></label>
+                                        <input type="text" id="studentUpdateFinalInput" placeholder="Enter students updated final grade">
+                                    </div>
+                                    <div class="button-holder">
+                                        <input type="submit" value="Update">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                   
+
+                    <div class="table-div">
+                        <table class="table" id="coursesInfoTable"></table>
+                    </div>
+                
                 </div>
                 <div class="students hidden page">
                     <h1>Students</h1>

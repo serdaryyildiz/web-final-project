@@ -1,6 +1,7 @@
 import {getCourseData , getCourseDataLength, setLocalStorage} from "../js/storagelocal.js";
 import { Course } from "./courses.js";
-import { getStudentsOfCourse } from "./studentInfoData.js";
+import { getGradesOfStudent, getStudentsOfCourse } from "./studentInfoData.js";
+import { calculateStudentGrade } from "./studentsdata.js";
 
 var coursesList = [];
 
@@ -41,10 +42,9 @@ export function findCourseById(courseID){
         for(let val = 0 ; val < courses.length ; val++){
             if (courseID === courses[val].courseID){
                 return courses[val];
-            } else{
-                return "Course has not been found .";
             }
         }
+        return "Course has not been found.";
     }  catch (err) {
         console.log("findCoursetById error , error : \n" +err);
     }
@@ -76,13 +76,22 @@ export function addNewCourse(courseName , courseID  , lecturer , midtermPercent 
                 "midtermPercent" : lecturer,
                 "acts" : acts
             }
-            console.log("calistim111");
+            if(courseID.length < 4 || courseID.length > 12){
+                console.log("Invalid course ID");
+                return "Unvalid input";
+            }
+            
+            if(acts <= 0 || acts > 10){
+                console.log("Invalid acts");
+                return "Unvalid input";
+            }
             if(!doesCourseExist(courseID)){
                 coursesList.push(newCourse);
-                console.log(coursesList);
+                console.log("Course Added");
                 localStorage.setItem("courses" , JSON.stringify(coursesList));
                 return "New course added.";
             }else {
+                console.log("Course Already Exists");
                 return "Course already exists!";
             }
     }catch(err){
@@ -160,6 +169,7 @@ export function createCourseTable(domElement){
     headerRow.insertCell().textContent = "Course ID";
     headerRow.insertCell().textContent = "Course Name";
     headerRow.insertCell().textContent = "Lecturer";
+    headerRow.insertCell().textContent = "Midterm Percent";
     headerRow.insertCell().textContent = "ACTS";
     headerRow.style.backgroundColor = "#303030";
     headerRow.style.color = "whitesmoke";
@@ -170,6 +180,7 @@ export function createCourseTable(domElement){
         row.insertCell().textContent = courses[i].courseID;
         row.insertCell().textContent = courses[i].courseName;
         row.insertCell().textContent = courses[i].lecturer;
+        row.insertCell().textContent = courses[i].midtermPercent + "%";
         row.insertCell().textContent = courses[i].acts;
         
         //Background color depends on index
@@ -206,25 +217,33 @@ export function insertToCoursesTable(domElement , courseName , courseID , midter
 
 export function showStudentsOfCourses(domElement){
     const courseTable = domElement;
+    courseTable.innerHTML = "";
     for(let val = 0 ; val<coursesList.length ; val++){
         const headerRow = courseTable.insertRow();
         headerRow.insertCell().textContent = "Course ID";
         headerRow.insertCell().textContent = "Course Name";
         headerRow.insertCell().textContent = "Student ID";
         headerRow.insertCell().textContent = "Student Name";
+        headerRow.insertCell().textContent = "Midterm";
+        headerRow.insertCell().textContent = "Final";
+        headerRow.insertCell().textContent = "Letter Grade";
         headerRow.style.backgroundColor = "#303030";
         headerRow.style.color = "whitesmoke";
         
         const courseStudents = getStudentsOfCourse(coursesList[val].courseID);
         for(let i = 0 ; i < courseStudents.length ; i++){
+            const grades = getGradesOfStudent(coursesList[val].courseID ,courseStudents[i].studentId);
             const row = courseTable.insertRow();
             row.insertCell().textContent = coursesList[val].courseID;
             row.insertCell().textContent = coursesList[val].courseName;
             row.insertCell().textContent = courseStudents[i].studentId;
             row.insertCell().textContent =  courseStudents[i].name;
+            row.insertCell().textContent =  grades.midtermGrade;
+            row.insertCell().textContent =  grades.finalGrade;
+            row.insertCell().textContent =  calculateStudentGrade(courseStudents[i].studentId , coursesList[val].courseID);
+            //console.log("öğrenci harf notu : " ,findStudentsLetterGrade(courseStudents[i].studentId , coursesList[val].courseID , true));
             
-            const background = courseStudents.length -1;
-            if (background % 2 === 1) {
+            if (i % 2 === 1) {
                 row.style.backgroundColor = "#B9B4C7";
                 row.style.color = "49415c";
               } else {

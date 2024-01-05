@@ -5,7 +5,6 @@ export class Course{
         this.lecturer = lecturer;
         this.courseName = courseName;
         this.midtermPercent = midtermPercent;
-        this.finalPerc = 100 - midtermPercent;
         this.acts = acts;
     }
 

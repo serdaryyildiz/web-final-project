@@ -56,6 +56,12 @@
                 "courseID": "TDB3801",
                 "midtermGrade": 40,
                 "finalGrade": 55
+            },
+            {
+                
+                "courseID": "CENG3007",
+                "midtermGrade": 87,
+                "finalGrade": 43
             }
         ]
     },
@@ -91,6 +97,12 @@
                 "courseID": "TDB3801",
                 "midtermGrade": 85,
                 "finalGrade": 90
+            },
+            {
+                
+                "courseID": "CENG3007",
+                "midtermGrade": 65,
+                "finalGrade": 43
             }
         ]
     },
@@ -106,6 +118,12 @@
                 "courseID": "CENG3545",
                 "midtermGrade": 88,
                 "finalGrade": 93
+            },
+            {
+                
+                "courseID": "CENG3007",
+                "midtermGrade": 87,
+                "finalGrade": 74
             }
         ]
     },
@@ -121,6 +139,12 @@
                 "courseID": "CENG3005",
                 "midtermGrade": 78,
                 "finalGrade": 82
+            },
+            {
+                
+                "courseID": "CENG3007",
+                "midtermGrade": 63,
+                "finalGrade": 25
             }
         ]
     },
@@ -136,6 +160,12 @@
                 "courseID": "ATB3801",
                 "midtermGrade": 80,
                 "finalGrade": 88
+            },
+            {
+                
+                "courseID": "CENG3007",
+                "midtermGrade": 55,
+                "finalGrade": 75
             }
         ]
     },
@@ -146,6 +176,12 @@
                 "courseID": "TDB3801",
                 "midtermGrade": 92,
                 "finalGrade": 95
+            },
+            {
+                
+                "courseID": "CENG3007",
+                "midtermGrade": 96,
+                "finalGrade": 84
             }
         ]
     },
@@ -166,6 +202,12 @@
                 "courseID": "CENG3005",
                 "midtermGrade": 78,
                 "finalGrade": 82
+            },
+            {
+                
+                "courseID": "CENG3007",
+                "midtermGrade": 57,
+                "finalGrade": 62
             }
         ]
     },
@@ -176,6 +218,12 @@
                 "courseID": "CENG3545",
                 "midtermGrade": 58,
                 "finalGrade": 63
+            },
+            {
+                
+                "courseID": "CENG3007",
+                "midtermGrade": 24,
+                "finalGrade": 69
             }
         ]
     },
@@ -211,6 +259,12 @@
                 "courseID": "ATB3801",
                 "midtermGrade": 68,
                 "finalGrade": 74
+            },
+            {
+                
+                "courseID": "CENG3007",
+                "midtermGrade": 18,
+                "finalGrade": 46
             }
         ]
     },
@@ -561,6 +615,12 @@
                 "courseID": "CENG3005",
                 "midtermGrade": 78,
                 "finalGrade": 82
+            },
+            {
+                
+                "courseID": "CENG3007",
+                "midtermGrade": 68,
+                "finalGrade": 77
             }
         ]
     },
@@ -676,6 +736,52 @@
                 "courseID": "CENG3005",
                 "midtermGrade": 85,
                 "finalGrade": 90
+            }
+        ]
+    },
+    {
+        "studentID": "200709043",
+        "studentCourseInfos": [
+            {
+                "courseID": "CENG3507",
+                "midtermGrade": 70,
+                "finalGrade": 75
+            },
+            {
+                "courseID": "TDB3801",
+                "midtermGrade": 72,
+                "finalGrade": 48
+            },
+            {
+                "courseID": "CENG3005",
+                "midtermGrade": 85,
+                "finalGrade": 87
+            }
+        ]
+    },
+    {
+        "studentID": "200709067",
+        "studentCourseInfos": [
+            {
+                "courseID": "CENG3507",
+                "midtermGrade": 20,
+                "finalGrade": 54
+            },
+            {
+                "courseID": "CENG3545",
+                "midtermGrade": 51,
+                "finalGrade": 22
+            },
+            {
+                "courseID": "TDB3801",
+                "midtermGrade": 40,
+                "finalGrade": 55
+            },
+            {
+                
+                "courseID": "CENG3007",
+                "midtermGrade": 87,
+                "finalGrade": 43
             }
         ]
     }
